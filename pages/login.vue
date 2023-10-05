@@ -1,10 +1,19 @@
 <template>
     <h1>login</h1>
-    username<input type="text" name="usernameFied">
-    <br>
-    password<input type="text" name="passwdFied">
-    <br>
-    <button v-on:click="getUsernameFied(),getPasswordFied()">Enter</button>
+
+    <div class="box">
+        <div class="logo">
+
+        </div>
+        <div class="field">
+            <ul>
+                <li>Username <input type="text" name="usernameField"></li>
+                <li>Password<input type="text" name="passwdField"></li>
+            </ul>
+            <button v-on:click="getUsernameField(),getPasswordField()">Accept</button>
+            <p>If you don’t have your account, Please click <NuxtLink to="/">Sign-Up</NuxtLink></p>
+        </div>
+    </div>
 
     <br><br>
     <h3>username is : {{username}}</h3>
@@ -21,12 +30,12 @@
             }
         },
         methods:{
-            getUsernameFied(){
-                const username = document.querySelector("input[name=usernameFied]").value
+            getUsernameField(){
+                const username = document.querySelector("input[name=usernameField]").value
                 this.username = username
             },
-            getPasswordFied(){
-                const passwd = document.querySelector("input[name=passwdFied]").value
+            getPasswordField(){
+                const passwd = document.querySelector("input[name=passwdField]").value
                 this.password = passwd
             }
         }
@@ -45,13 +54,13 @@
         background-color: gainsboro;
     }
     button {
-        background-color: tomato;
+        background-color: rgb(148, 166, 132);
         transition: 0.35s;
         padding: 10px 10px;
     }
 
     button:hover {
-        background-color: red;
+        background-color: rgb(121, 142, 102);
         transition: 0.35s;
     }
 </style>
