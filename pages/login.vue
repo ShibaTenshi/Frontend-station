@@ -8,11 +8,11 @@
             <ul>
                 <div class="textField">
                     <p>Username</p>
-                    <li><input type="text" name="usernameField"></li>
+                    <li><input type="text" name="usernameField" id="usernameField"></li>
                 </div>
                 <div class="textField">
                     <p>Password</p>
-                    <li><input type="text" name="passwdField"></li>
+                    <li><input type="password" name="passwdField" id="passwdField"></li>
                 </div>
             </ul>
             <button v-on:click="getUsernameField(),getPasswordField()" class="AcceptBt">Accept</button>
@@ -106,6 +106,8 @@
         transition: 0.35s;
         border-color: rgb(151, 151, 151);
     }
+
+
     .field .AcceptBt{
         font-weight: bold;
         font-size: 15px;
@@ -123,6 +125,7 @@
         padding: 10px 33px;
     }
 
+    
     .signupLink{
         text-align: center;
         font-size: 14px;
