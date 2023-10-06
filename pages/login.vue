@@ -36,8 +36,8 @@
         },
         methods:{
             getUsernameField(){
-                const username = document.querySelector("input[name=usernameField]").value
-                this.username = username
+                const user = document.querySelector("input[name=usernameField]").value
+                this.username = user
             },
             getPasswordField(){
                 const passwd = document.querySelector("input[name=passwdField]").value
