@@ -2,6 +2,7 @@
 
     <div class="box">
         <div class="logo">
+            <img src="../assets/login.png" alt="" srcset="" class="loginImage">
             <h4>Log-In</h4>
         </div>
         <div class="field">
@@ -15,15 +16,10 @@
                     <li><input type="password" name="passwdField" id="passwdField"></li>
                 </div>
             </ul>
-            <button v-on:click="getUsernameField(),getPasswordField()" class="AcceptBt">Accept</button>
+            <button v-on:click="testAuth()" class="AcceptBt">Accept</button>
             <p class="signupLink">If you don’t have your account, Please click <NuxtLink to="/">Sign-Up</NuxtLink></p>
         </div>
     </div>
-
-    <br><br>
-    <h3>username is : {{username}}</h3>
-    <br>
-    <h3>password is : {{password}}</h3>
 </template>
 
 <script>
@@ -38,10 +34,18 @@
             getUsernameField(){
                 const user = document.querySelector("input[name=usernameField]").value
                 this.username = user
+
             },
             getPasswordField(){
                 const passwd = document.querySelector("input[name=passwdField]").value
                 this.password = passwd
+            },
+
+            testAuth(){
+                this.getUsernameField()
+                this.getPasswordField()
+                const data = () => {useAuth(this.username, this.password)}
+                data()
             }
         }
     }
@@ -74,6 +78,14 @@
         margin: 4rem;
         font-size: 20px;
         font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .logo .loginImage{
+        width: 3rem;
+        margin-right: 15px;
     }
     .field{
         text-align: center;
