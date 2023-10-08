@@ -3,10 +3,13 @@
     padding: 0;
     box-sizing: border-box;
     background-color: white;
+    font-family: sans-serif;
 }
 
 .signUpBox{
-    margin: 7rem;
+    margin: 6rem;
+    margin-left: 20rem;
+    margin-right: 20rem;
     border: 2px solid rgb(177, 206, 1);
     border-radius: 20px;
     box-shadow: 10px 10px rgb(226, 226, 226);
@@ -34,18 +37,20 @@
     margin: 10px;
 }
 .form ul {
-    border: 1px solid bisque;
     margin: 10px;
 }
 .form ul li{
-    border: 1px solid gray;
     margin: 2rem;
-    justify-content:space-evenly;
+    justify-content:space-between;
     list-style: none;
     display:flex;
     align-items: center;
 }
 .form ul li p{
+    margin-left: 20%;
+}
+.form ul li input{
+    margin-right: 25%;
 }
 
 input{
@@ -62,4 +67,29 @@ input{
 input:hover{
     transition: 0.35s;
     border-color: rgb(151, 151, 151);
+}
+
+.form .enter{
+    display: flex;
+    justify-content:right;
+    margin-right: 2.7rem;
+}
+
+.form .enter button p{
+    font-weight: bold;
+    font-size: 14px;
+    background-color: transparent;
+}
+.form .enter button{
+    margin: 10px;
+    background-color: rgb(148, 166, 132);
+    font-size: 14px;
+    padding: 10px;
+    width: 8rem;
+    border-radius: 10px;
+    transition: 0.35s;
+}
+.form .enter button:hover{
+    transition: 0.35s;
+    background-color: rgb(121, 142, 102);
 }
