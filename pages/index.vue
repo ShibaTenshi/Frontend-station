@@ -1,5 +1,5 @@
 <template>
-    <div class="signUpBox">
+    <div class="signUpBox" id="signUpBox1">
         <div class="logo">
             <img src="@/assets/login.png" alt="">
             <div class="signup">
@@ -72,22 +72,41 @@
                 this.username = null
             },
 
+            validateForm(){
+                let status = 0;
+                const name = this.getFirstNameField();
+                const email = this.getEmailField();
+                const username = this.getUsernameField();
 
-            validate(){
-                //test
+                if (checkEmail(email) == 0 && email !== ""){
+                    status = 0
+                    alert("email in valid")
+                }
+
+                if (name === "" || email === "" || username === ""){
+                    status = 0
+                }
+
+                if (name !== "" && checkEmail(email) && username !== ""){
+                    this.name = name
+                    this.email = email
+                    this.username = username;
+                    status = 1
+                }
+
+                const signupForm = [this.name, this.email, this.username]
+                let buff = JSON.stringify(signupForm)
+                localStorage.setItem("h1",buff)
+
+                return status
             },
-
             async signupForm(){
                 try {
                     this.queryForm()
-                    this.validate()
-                    const signupForm = () => {useSignUpForm(this.name, this.email, this.username)} //Api
-                    try {
-                        signupForm()
-                    } catch (e) {
-                        console.log(e)
+                    if (this.validateForm()){
+                        //gotoPage2()
+                        location.replace("/2");
                     }
-
                 } catch (e) {
                     console.log(e)
                 }

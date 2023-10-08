@@ -1,5 +1,5 @@
 <template>
-
+    <Header />
     <div class="box">
         <div class="logo">
             <img src="../assets/login.png" alt="" srcset="" class="loginImage">
@@ -24,31 +24,29 @@
 
 <script>
     export default{
-        data(){
-            return{
-                username: null,
-                password: null
-            }
+    data() {
+        return {
+            username: null,
+            password: null
+        };
+    },
+    methods: {
+        getUsernameField() {
+            const user = document.querySelector("input[name=usernameField]").value;
+            this.username = user;
         },
-        methods:{
-            getUsernameField(){
-                const user = document.querySelector("input[name=usernameField]").value
-                this.username = user
-
-            },
-            getPasswordField(){
-                const passwd = document.querySelector("input[name=passwdField]").value
-                this.password = passwd
-            },
-
-            testAuth(){
-                this.getUsernameField()
-                this.getPasswordField()
-                const data = () => {useAuth(this.username, this.password)}
-                data()
-            }
+        getPasswordField() {
+            const passwd = document.querySelector("input[name=passwdField]").value;
+            this.password = passwd;
+        },
+        testAuth() {
+            this.getUsernameField();
+            this.getPasswordField();
+            const data = () => { useAuth(this.username, this.password); };
+            data();
         }
-    }
+    },
+}
 </script>
 
 
