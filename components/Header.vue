@@ -7,10 +7,10 @@
             <nav>
                 <ul>
                     <li>
-                        <NuxtLink to="/">LOGO</NuxtLink>
+                        <NuxtLink to="/" v-if="logo">LOGO</NuxtLink>
                     </li>
                     <li>
-                        <NuxtLink to="/login">Login</NuxtLink>
+                        <NuxtLink to="/login" v-if="login">Login</NuxtLink>
                     </li>
                 </ul>
             </nav>
@@ -20,6 +20,15 @@
         <slot></slot>
     </div>
 </template>
+
+<script lang="ts" setup>
+  defineProps({
+    logo: Boolean,
+    signupBtn: Boolean,
+    login: Boolean,
+    
+  })
+</script>
 
 <style>
     .header nav ul{

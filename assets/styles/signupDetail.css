@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: white;
+    font-family: sans-serif;
+}
+
+input{
+    padding: 15px;
+    font-size: 18px;
+    background-color: white;
+    width: 16rem;
+    height: 1.8rem;
+    border-radius: 3rem;
+    border: 1px solid black;
+    outline: none;
+    transition: 0.35s;
+}
+input:hover{
+    transition: 0.35s;
+    border-color: rgb(151, 151, 151);
+}
+
+.detailBox {
+    max-width: 950px;
+    max-height: 550px;
+
+    min-width: 600px;
+    min-height: 400px;
+    margin-top: 6rem;
+    margin-left: 15rem;
+    margin-right: 15rem;
+    border: 2px solid rgb(177, 206, 1);
+    border-radius: 20px;
+    box-shadow: 10px 10px rgb(226, 226, 226);
+}
+
+.detailBox .logo{
+    margin: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.detailBox .logo img{
+    width: 70px;
+    margin: 10px;
+}
+
+ul {
+    list-style: none;
+}
+
+
+.detailBox .form ul li{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 8rem;
+    margin-right: 6rem;
+    margin-bottom: 2rem;
+
+}
+
+.detailBox .form ul {
+    margin: 10px;
+}
+
+.enter{
+    margin: 15px;
+}
+
+button{
+    margin: 10px;
+    background-color: rgb(148, 166, 132);
+    font-size: 14px;
+    padding: 10px;
+    width: 8rem;
+    border-radius: 10px;
+    transition: 0.35s;
+}
+
+
+.detailBox .form .enter {
+    display: flex;
+    justify-content: right;
+    margin-right: 5.8rem;
+}
+button p{
+    background-color: transparent;
+}
+button:hover{
+    transition: 0.35s;
+    background-color: rgb(121, 142, 102);
+}

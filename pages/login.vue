@@ -1,5 +1,5 @@
 <template>
-    <Header />
+    <Header :logo="true"/>
     <div class="box">
         <div class="logo">
             <img src="../assets/login.png" alt="" srcset="" class="loginImage">

@@ -1,4 +1,5 @@
 <template>
+    <Header :logo="true" :login="true"/>
     <div class="signUpBox" id="signUpBox1">
         <div class="logo">
             <img src="@/assets/login.png" alt="">
@@ -23,7 +24,7 @@
                 </li>
             </ul>
             <div class="enter">
-                <button v-on:click="signupForm()"><p>Next</p></button>
+                <button v-on:click="signupForm"><p>Next</p></button>
             </div>
         </div>
     </div>
@@ -39,19 +40,9 @@
             }
         },
         methods:{
-            getFirstNameField(){
-                const name = document.querySelector("input[name=nameField]").value
-                return name
-            },
-            getEmailField(){
-                const email = document.querySelector("input[name=emailField]").value
-                return email
-            },
-            getUsernameField(){
-                const username = document.querySelector("input[name=usernameField]").value
-                return username
-            },
-
+            getFirstNameField(){ return document.querySelector("input[name=nameField]").value },
+            getEmailField(){ return document.querySelector("input[name=emailField]").value },
+            getUsernameField(){ return document.querySelector("input[name=usernameField]").value },
 
             queryForm(){
                 this.name = this.getFirstNameField()
@@ -94,16 +85,15 @@
                     status = 1
                 }
 
-                const signupForm = [this.name, this.email, this.username]
-                let buff = JSON.stringify(signupForm)
-                localStorage.setItem("h1",buff)
-
                 return status
             },
             async signupForm(){
                 try {
                     this.queryForm()
                     if (this.validateForm()){
+                        const signupForm = [this.name, this.email, this.username]
+                        let buff = JSON.stringify(signupForm)
+                        localStorage.setItem("h1",buff)
                         //gotoPage2()
                         location.replace("/2");
                     }
