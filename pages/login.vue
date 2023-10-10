@@ -16,7 +16,7 @@
                     <li><input type="password" name="passwdField" id="passwdField"></li>
                 </div>
             </ul>
-            <button v-on:click="testAuth()" class="AcceptBt">Accept</button>
+            <button v-on:click="loginRequest" class="AcceptBt">Accept</button>
             <p class="signupLink">If you don’t have your account, Please click <NuxtLink to="/">Sign-Up</NuxtLink></p>
         </div>
     </div>
@@ -31,21 +31,41 @@
         };
     },
     methods: {
-        getUsernameField() {
-            const user = document.querySelector("input[name=usernameField]").value;
-            this.username = user;
+        getUsernameField() { return document.querySelector("input[name=usernameField]").value },
+        getPasswordField() { return  document.querySelector("input[name=passwdField]").value },
+
+        clearPaswordField(){
+            const field = document.getElementById("passwdField")
+            field.value = ""
         },
-        getPasswordField() {
-            const passwd = document.querySelector("input[name=passwdField]").value;
-            this.password = passwd;
+        validate(){
+            const username = this.getUsernameField()
+            const passwdField = this.getPasswordField()
+
+            if (username !== "" && passwdField !== ""){
+                return 1
+            }
+            else{
+                return 0
+            }
         },
-        testAuth() {
-            this.getUsernameField();
-            this.getPasswordField();
-            const data = () => { useAuth(this.username, this.password); };
-            data();
+
+        //main function
+        async authentication(){
+            const response = await useAuth(toString(this.getUsernameField()), toString(this.getPasswordField()))
+            this.clearPaswordField()
+            console.log(response)
+        },
+        loginRequest(){
+            if (this.validate()){
+                this.authentication()
+            }
+            else{
+                this.clearPaswordField()
+                //do some thing.
+            }
         }
-    },
+    }
 }
 </script>
 
