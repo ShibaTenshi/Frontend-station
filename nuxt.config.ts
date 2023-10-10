@@ -3,5 +3,6 @@ export default defineNuxtConfig({
   typescript: {
     strict: true
   },
+  modules: [],
   devtools: { enabled: true }
 })
