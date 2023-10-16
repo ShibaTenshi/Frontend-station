@@ -54,9 +54,13 @@
         //main function
         async authentication(){
             const response = await useAuth(this.getUsernameField(), this.getPasswordField())
-            if (response.status == "FAILED"){
-                alert(response.value)
-                //do something
+            if (response.status == 200){
+                const cookie = useCookie('token')
+                cookie.value = response.data
+                navigateTo('/usrs')
+            }
+            else{
+                alert("username or password not correct")
             }
         },
         loginRequest(){
@@ -66,7 +70,7 @@
             }
             else{
                 this.clearPaswordField()
-                //do some thing.
+                alert("input must not empty")
             }
         }
     }

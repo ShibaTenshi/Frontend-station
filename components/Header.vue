@@ -7,10 +7,13 @@
             <nav>
                 <ul>
                     <li>
-                        <NuxtLink to="/" v-if="logo">LOGO</NuxtLink>
+                        <NuxtLink to="/usrs" v-if="logo">LOGO</NuxtLink>
                     </li>
                     <li>
                         <NuxtLink to="/login" v-if="login">Login</NuxtLink>
+                    </li>
+                    <li>
+                        <button v-if="logout" v-on:click="islogout">Logout</button>
                     </li>
                 </ul>
             </nav>
@@ -21,14 +24,37 @@
     </div>
 </template>
 
-<script lang="ts" setup>
+<script setup>
   defineProps({
     logo: Boolean,
     signupBtn: Boolean,
     login: Boolean,
+    logout: Boolean
     
   })
+  
+  async function islogout(){
+    const status = await useIsLogin()
+    const cookie = useCookie('token')
+    if (status == 200){
+        const axios = useNuxtApp().$axios;
+        const api = 'http://localhost:5041/auth/logout';
+
+        await axios.post(api,null ,{params: {
+            token: cookie.value
+        }
+    },
+    {
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        }
+    }).then((response) => response)
+    }
+    cookie.value = ''
+    navigateTo('/login')
+  }
 </script>
+
 
 <style>
     .header nav ul{

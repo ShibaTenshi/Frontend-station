@@ -1,9 +1,24 @@
 <template>
+    <Header :logo="true" :logout="true"/>
     <h1>Information</h1>
 </template>
 
-<script>
+<script setup>
     definePageMeta({
         middleware: 'auth'
     })
+
+</script>
+
+
+
+<script>
+export default {
+    data(){
+        return{
+
+        }
+    },
+    methods:{}
+}
 </script>
