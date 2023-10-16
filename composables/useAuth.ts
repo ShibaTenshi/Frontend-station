@@ -1,8 +1,8 @@
-export const useAuth = async (usr:string, pass:string) => {
-    const axios = useNuxtApp().$axios
-    const api = 'http://10.147.17.139:8080/login/customer' // test with customer
+export async function useAuth(usr:string, pass:string) {
+    const axios = useNuxtApp().$axios;
+    const api = 'http://localhost:8080/login/restaurant';
 
-    axios.post(api, {
+    const data = await axios.post(api, {
         username: usr,
         password: pass
     },{
@@ -11,8 +11,10 @@ export const useAuth = async (usr:string, pass:string) => {
         }
     }
     ).then((response) => {
-        return response
+        return response.data;
     }).catch((error) => {
-        return error
+        return error;
     })
+
+    return data;
 }

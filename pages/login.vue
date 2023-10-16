@@ -34,6 +34,9 @@
         getUsernameField() { return document.querySelector("input[name=usernameField]").value },
         getPasswordField() { return  document.querySelector("input[name=passwdField]").value },
 
+        failMassage(){
+
+        },
         clearPaswordField(){
             const field = document.getElementById("passwdField")
             field.value = ""
@@ -45,20 +48,21 @@
             if (username !== "" && passwdField !== ""){
                 return 1
             }
-            else{
-                return 0
-            }
+            return 0
         },
 
         //main function
         async authentication(){
-            const response = await useAuth(toString(this.getUsernameField()), toString(this.getPasswordField()))
-            this.clearPaswordField()
-            console.log(response)
+            const response = await useAuth(this.getUsernameField(), this.getPasswordField())
+            if (response.status == "FAILED"){
+                alert(response.value)
+                //do something
+            }
         },
         loginRequest(){
             if (this.validate()){
                 this.authentication()
+                this.clearPaswordField()
             }
             else{
                 this.clearPaswordField()
