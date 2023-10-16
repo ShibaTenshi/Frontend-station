@@ -6,16 +6,17 @@
     font-family: sans-serif;
 }
 
-input{
+input {
     padding: 15px;
-    font-size: 18px;
+    /* font-size: 18px;
     background-color: white;
     width: 16rem;
     height: 1.8rem;
     border-radius: 3rem;
     border: 1px solid black;
     outline: none;
-    transition: 0.35s;
+    transition: 0.35s; */
+    background-color: whitesmoke;
 }
 input:hover{
     transition: 0.35s;

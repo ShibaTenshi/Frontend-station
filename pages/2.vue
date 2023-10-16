@@ -12,23 +12,25 @@
             <ul>
                 <li>
                     <p>Restaurant Name</p>
-                    <input type="text" name="restaurantNameField" id="restaurantNameField">
+                    <input type="text" name="restaurantNameField" id="restaurantNameField" class="text">
                 </li>
                 <li>
                     <p>Restaurant Type</p>
-                    <input type="text" name="restaurantTypeField" id="restaurantTypeField">
+                    <select name="type" id="typeDropDown" v-on:change="getTypeDropDown">
+                        <option value="">Select Type Restaurant</option>
+                    </select>
                 </li>
                 <li>
                     <p>Description</p>
-                    <input type="text" name="descriptionField" id="descriptionField">
+                    <input type="text" name="descriptionField" id="descriptionField" class="text">
                 </li>
                 <li>
                     <p>Location</p>
-                    <input type="text" name="locationField" id="locationField">
+                    <input type="text" name="locationField" id="locationField" class="text">
                 </li>
                 <li>
                     <p>Upload Image</p>
-                    <input type="text" name="imageField" id="imageField">
+                    <input type="file" accept=".jpg, .jpeg, .png" name="imageField" id="imageField" class="text">
                 </li>
             </ul>
             <div class="enter">
@@ -39,9 +41,14 @@
 </template>
 
 <script>
+import { getType } from '~/utils/getType'
+//api category notcomplete
+//api signup   notcomplete
+
     export default{
         data(){
             return{
+                category: null,
                 restaurantName: null,
                 restaurantType: null,
                 description: null,
@@ -50,19 +57,47 @@
             }
         },
         methods:{
+            getRestaurantName(){ return document.querySelector("input[name=restaurantNameField]").value },
+            getDescription(){ return document.querySelector("input[name=descriptionField]").value},
+            getLocation(){ return document.querySelector("input[name=locationField]").value},
+            getImage(){return document.getElementById("imageField").value},
+
+            getTypeDropDown(){
+                let selectElement = document.querySelector('#typeDropDown');
+                this.restaurantType = selectElement.options[selectElement.selectedIndex].value;
+            },
+
             haveLocalStorage(){
                 const arr = localStorage.getItem("h1")
                 if (arr == null){
                     location.replace('/')
                 }
             },
+            setDropDown(){
+                let select = document.getElementById("typeDropDown")
 
-            getRestaurantName(){ return document.querySelector("restaurantNameField") },
+                for (let type = 0; type < 5; type++) { // get type from api
+                    let option = document.createElement("option");
+                    option.setAttribute('value', type);
+                    let optionText = document.createTextNode(type);
+                    option.appendChild(optionText);
+                    select.appendChild(option);
+                }
+            },
+
+            queryForm(){
+                this.restaurantName = this.getRestaurantName()
+                this.description = this.getDescription()
+                this.location = this.getLocation()
+                this.image = this.getImage()
+                //console.log(restaurantName)
+            },
+
             
             requestForm(){
+                this.queryForm()
                 let buff = localStorage.getItem("h1")
                 let arry = JSON.parse(buff)
-                console.log(arry)
 
                 arry[3] = this.restaurantName
                 arry[4] = this.restaurantType
@@ -70,11 +105,14 @@
                 arry[6] = this.location
                 arry[7] = this.image
                 console.log(arry)
+
+                //useSignUpForm(arry[0], arry[1], arry[2],arry[3],arry[4],arry[5],arry[6],arry[7])
             }
 
         },
         mounted: function(){
             this.$nextTick(this.haveLocalStorage())
+            this.$nextTick(this.setDropDown())
         }
     }
 </script>
