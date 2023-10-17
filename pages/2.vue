@@ -81,15 +81,24 @@ import { getType } from '~/utils/getType'
                 }
             },
             setDropDown(){
-                let select = document.getElementById("typeDropDown")
+                async function getTag(){
+                    const axios = useNuxtApp().$axios
+                    const api = 'http://localhost:5041/content/category'
+                    let select = document.getElementById("typeDropDown")
 
-                for (let type = 0; type < 5; type++) { // get type from api
-                    let option = document.createElement("option");
-                    option.setAttribute('value', type);
-                    let optionText = document.createTextNode(type);
-                    option.appendChild(optionText);
-                    select.appendChild(option);
+                    await  axios.get(api).then((response) => {
+                        const tagRestaurant = response.data
+                        for (let tagindex = 0 ; tagindex < tagRestaurant.length; tagindex++){
+
+                            let option = document.createElement("option");
+                            option.setAttribute('value', tagRestaurant[tagindex]);
+                            let optionText = document.createTextNode(tagRestaurant[tagindex]);
+                            option.appendChild(optionText);
+                            select.appendChild(option);
+                        }
+                    })
                 }
+                getTag()
             },
 
             queryForm(){

@@ -13,7 +13,7 @@
                 </div>
                 <div class="textField">
                     <p>Password</p>
-                    <li><input type="password" name="passwdField" id="passwdField" @keydown.enter="test"></li>
+                    <li><input type="password" name="passwdField" id="passwdField" @keydown.enter="loginRequest"></li>
                 </div>
             </ul>
             <button v-on:click="loginRequest" class="AcceptBt">Accept</button>

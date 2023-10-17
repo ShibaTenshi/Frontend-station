@@ -8,14 +8,14 @@
                 <ul>
                     <li class="logo">
                         <img class="imageLogo" src="../assets/RestaurantLogo.png" alt="" style="background: transparent;">
-                        <NuxtLink to="/usrs" v-if="logo" class="namelogo">ShibaStation</NuxtLink>
+                        <NuxtLink to="/usrs" v-if="logo" class="namelogo" style="color: white;">ShibaStation</NuxtLink>
                     </li>
                     <div class="menu">
                         <li>
-                        <NuxtLink to="/login" v-if="login" class="menulogin">Login</NuxtLink>
+                        <NuxtLink to="/login" v-if="login" class="menulogin" style="color: white;">Login</NuxtLink>
                         </li>
                         <li>
-                        <button v-if="logout" v-on:click="islogout" class="logoutButton">Logout</button>
+                        <button v-if="logout" v-on:click="islogout" class="logoutButton" style="color: white;">Logout</button>
                         </li>
                     </div>
                 </ul>
@@ -82,7 +82,7 @@
     ul .logo{
         display: flex;
         align-items: center;
-        margin-left: 10px;
+        margin-left: 1px;
     }
     .logo .imageLogo{
         width: 40px;
