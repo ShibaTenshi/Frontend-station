@@ -44,6 +44,13 @@
             getEmailField(){ return document.querySelector("input[name=emailField]").value },
             getUsernameField(){ return document.querySelector("input[name=usernameField]").value },
 
+            islogin(){
+                const cookie = useCookie('token')
+                if (cookie.value != ""){
+                    navigateTo('/usrs')
+                }
+            },
+
             queryForm(){
                 this.name = this.getFirstNameField()
                 this.email = this.getEmailField()
@@ -104,7 +111,10 @@
                     this.clearForm()
                 }
             }
-        }
+        },
+        mounted: function() {
+        this.$nextTick(this.islogin())
+    }
     }
 </script>
 

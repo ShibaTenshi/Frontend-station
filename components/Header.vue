@@ -6,15 +6,18 @@
         <div class="header">
             <nav>
                 <ul>
-                    <li>
-                        <NuxtLink to="/usrs" v-if="logo">LOGO</NuxtLink>
+                    <li class="logo">
+                        <img class="imageLogo" src="../assets/RestaurantLogo.png" alt="" style="background: transparent;">
+                        <NuxtLink to="/usrs" v-if="logo" class="namelogo">ShibaStation</NuxtLink>
                     </li>
-                    <li>
-                        <NuxtLink to="/login" v-if="login">Login</NuxtLink>
-                    </li>
-                    <li>
-                        <button v-if="logout" v-on:click="islogout">Logout</button>
-                    </li>
+                    <div class="menu">
+                        <li>
+                        <NuxtLink to="/login" v-if="login" class="menulogin">Login</NuxtLink>
+                        </li>
+                        <li>
+                        <button v-if="logout" v-on:click="islogout" class="logoutButton">Logout</button>
+                        </li>
+                    </div>
                 </ul>
             </nav>
         </div>
@@ -57,7 +60,16 @@
 
 
 <style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+        font-size: 20px;
+    }
+    
     .header nav ul{
+        height: 50px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -66,7 +78,56 @@
         background-color: rgb(148, 166, 132);
     }
 
-    NextLink{
+    /*logo*/
+    ul .logo{
+        display: flex;
+        align-items: center;
+        margin-left: 10px;
+    }
+    .logo .imageLogo{
+        width: 40px;
+        margin-bottom: 10px;
+    }
+    .logo {
+        background-color: transparent;
+       
+    }
+    .namelogo{
+        margin-left: 10px;
+        background-color: transparent;
         text-decoration: none;
+        color: black;
+    }
+
+    /*menu*/
+    .header nav ul .menu{
+        display: flex;
+        justify-content: right;
+        background-color: transparent;
+    }
+    .menu li {
+        margin-right: 10px;
+        background-color: transparent;
+    }
+    .menulogin{
+        background-color: transparent; 
+        text-decoration: none;
+        color: black;
+        transition: 0.35s ease-in-out;
+    }
+    .menulogin:hover{
+        color: rgb(58, 73, 44);
+        transition: 0.35s ease-in;
+    }
+
+
+    /* logoutbutton */
+    .logoutButton{ 
+        background-color: transparent;
+        transition: 0.35s;
+    }
+    .logoutButton:hover{
+        color: rgb(58, 73, 44);
+        transition: 0.35s;
     }
 </style>

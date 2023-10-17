@@ -13,7 +13,7 @@
                 </div>
                 <div class="textField">
                     <p>Password</p>
-                    <li><input type="password" name="passwdField" id="passwdField"></li>
+                    <li><input type="password" name="passwdField" id="passwdField" @keydown.enter="test"></li>
                 </div>
             </ul>
             <button v-on:click="loginRequest" class="AcceptBt">Accept</button>
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-    export default{
+    export default {
     data() {
         return {
             username: null,
@@ -34,11 +34,19 @@
         getUsernameField() { return document.querySelector("input[name=usernameField]").value },
         getPasswordField() { return  document.querySelector("input[name=passwdField]").value },
 
+        islogin(){
+            const cookie = useCookie('token')
+            if (cookie.value != ""){
+                navigateTo('/usrs')
+            }
+        },
+
         failMassage(){
 
         },
         clearPaswordField(){
             const field = document.getElementById("passwdField")
+            this.password = null
             field.value = ""
         },
         validate(){
@@ -50,19 +58,6 @@
             }
             return 0
         },
-
-        //main function
-        async authentication(){
-            const response = await useAuth(this.getUsernameField(), this.getPasswordField())
-            if (response.status == 200){
-                const cookie = useCookie('token')
-                cookie.value = response.data
-                navigateTo('/usrs')
-            }
-            else{
-                alert("username or password not correct")
-            }
-        },
         loginRequest(){
             if (this.validate()){
                 this.authentication()
@@ -72,7 +67,24 @@
                 this.clearPaswordField()
                 alert("input must not empty")
             }
-        }
+        },
+
+        //main function
+        async authentication(){
+            const response = await useAuth(this.getUsernameField(), this.getPasswordField())
+            if (response.status == 200){
+                const cookie = useCookie('token')
+                cookie.value = response.data
+                this.password = null
+                navigateTo('/usrs')
+            }
+            else{
+                alert("username or password not correct")
+            }
+        },
+    },
+    mounted: function() {
+        this.$nextTick(this.islogin())
     }
 }
 </script>

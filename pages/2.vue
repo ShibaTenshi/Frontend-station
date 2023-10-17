@@ -62,6 +62,13 @@ import { getType } from '~/utils/getType'
             getLocation(){ return document.querySelector("input[name=locationField]").value},
             getImage(){return document.getElementById("imageField").value},
 
+            islogin(){
+                const cookie = useCookie('token')
+                if (cookie.value != ""){
+                    navigateTo('/usrs')
+                }
+            },
+
             getTypeDropDown(){
                 let selectElement = document.querySelector('#typeDropDown');
                 this.restaurantType = selectElement.options[selectElement.selectedIndex].value;
@@ -113,6 +120,7 @@ import { getType } from '~/utils/getType'
         mounted: function(){
             this.$nextTick(this.haveLocalStorage())
             this.$nextTick(this.setDropDown())
+            this.$nextTick(this.islogin())
         }
     }
 </script>
