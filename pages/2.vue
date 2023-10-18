@@ -29,20 +29,35 @@
                     <input type="text" name="locationField" id="locationField" class="text">
                 </li>
                 <li>
-                    <p>Upload Image</p>
-                    <input type="file" accept=".jpg, .jpeg, .png" name="imageField" id="imageField" class="text">
+                    <p>Open Date</p>
+                    <select name="type" id="hours" v-on:change="getOpenHoursDropDown">
+                        <option value="">Select Hours</option>
+                    </select>
+                    <select name="type" id="minutes" v-on:change="getOpenMinutesDropDown">
+                        <option value="">Select Minutes</option>
+                    </select>
+                </li>
+                <li>
+                    <p>Close Date</p>
+                    <select name="type" id="hours2" v-on:change="getCloseHoursDropDown">
+                        <option value="">Select Hours</option>
+                    </select>
+                    <select name="type" id="minutes2" v-on:change="getCloseMinutesDropDown">
+                        <option value="">Select Minutes</option>
+                    </select>
                 </li>
             </ul>
             <div class="enter">
-                <button v-on:click="requestForm"><p>Request</p></button>
+                <button v-on:click="saveForm"><p>Next</p></button>
+            </div>
+            <div class="back">
+                <button v-on:click="goBack">Back</button>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import { getType } from '~/utils/getType'
-//api category notcomplete
 //api signup   notcomplete
 
     export default{
@@ -50,17 +65,18 @@ import { getType } from '~/utils/getType'
             return{
                 category: null,
                 restaurantName: null,
-                restaurantType: null,
+                restaurantType: '',
                 description: null,
                 location: null,
-                image: null
+                image: null,
+                opendate: null,
+                closedate: null
             }
         },
         methods:{
             getRestaurantName(){ return document.querySelector("input[name=restaurantNameField]").value },
             getDescription(){ return document.querySelector("input[name=descriptionField]").value},
             getLocation(){ return document.querySelector("input[name=locationField]").value},
-            getImage(){return document.getElementById("imageField").value},
 
             islogin(){
                 const cookie = useCookie('token')
@@ -73,6 +89,42 @@ import { getType } from '~/utils/getType'
                 let selectElement = document.querySelector('#typeDropDown');
                 this.restaurantType = selectElement.options[selectElement.selectedIndex].value;
             },
+            getOpenHoursDropDown(){
+                let select = document.getElementById("hours")
+                let data = select.options[select.selectedIndex].text
+                if (data.length > 2){
+                    return null
+                }else{
+                    return data
+                }
+            },
+            getOpenMinutesDropDown(){
+                let select = document.getElementById("minutes")
+                let data = select.options[select.selectedIndex].text
+                if (data.length > 2){
+                    return null
+                }else{
+                    return data
+                }
+            },
+            getCloseHoursDropDown(){
+                let select = document.getElementById("hours2")
+                let data = select.options[select.selectedIndex].text
+                if (data.length > 2){
+                    return null
+                }else{
+                    return data
+                }
+            },
+            getCloseMinutesDropDown(){
+                let select = document.getElementById("minutes2")
+                let data = select.options[select.selectedIndex].text
+                if (data.length > 2){
+                    return null
+                }else{
+                    return data
+                }
+            },
 
             haveLocalStorage(){
                 const arr = localStorage.getItem("h1")
@@ -80,7 +132,7 @@ import { getType } from '~/utils/getType'
                     location.replace('/')
                 }
             },
-            setDropDown(){
+            setTypeDropDown(){
                 async function getTag(){
                     const axios = useNuxtApp().$axios
                     const api = 'http://localhost:5041/content/category'
@@ -101,35 +153,86 @@ import { getType } from '~/utils/getType'
                 getTag()
             },
 
+            setHours(){
+                let select = document.getElementById("hours")
+                for (let hours = 0; hours < 24; hours++) {
+                    let data = document.createElement("option");
+                    data.setAttribute('value',hours);
+                    let dataText = document.createTextNode(hours);
+                    data.appendChild(dataText);                    
+                    select.appendChild(data)     
+                }
+
+                let select2 = document.getElementById("hours2")
+                for (let hours = 0; hours < 24; hours++) {
+                    let data = document.createElement("option");
+                    data.setAttribute('value',hours);
+                    let dataText = document.createTextNode(hours);
+                    data.appendChild(dataText);
+                    select2.appendChild(data)     
+                }
+            },
+            setMinutes(){
+                let select = document.getElementById("minutes")
+                for (let minutes = 0; minutes < 60; minutes++) {
+                    let data = document.createElement("option");
+                    data.setAttribute('value',minutes);
+                    let dataText = document.createTextNode(minutes);
+                    data.appendChild(dataText);                    
+                    select.appendChild(data)     
+                }
+
+                let select2 = document.getElementById("minutes2")
+                for (let minutes = 0; minutes < 60; minutes++) {
+                    let data = document.createElement("option");
+                    data.setAttribute('value',minutes);
+                    let dataText = document.createTextNode(minutes);
+                    data.appendChild(dataText);                    
+                    select2.appendChild(data)      
+                }
+            },
+
             queryForm(){
                 this.restaurantName = this.getRestaurantName()
                 this.description = this.getDescription()
                 this.location = this.getLocation()
-                this.image = this.getImage()
-                //console.log(restaurantName)
+                this.opendate = this.getOpenHoursDropDown() + ":" + this.getOpenMinutesDropDown()
+                this.closedate = this.getCloseHoursDropDown() + ":" + this.getCloseMinutesDropDown()
             },
 
             
-            requestForm(){
+            saveForm(){
                 this.queryForm()
                 let buff = localStorage.getItem("h1")
                 let arry = JSON.parse(buff)
 
-                arry[3] = this.restaurantName
-                arry[4] = this.restaurantType
-                arry[5] = this.description
-                arry[6] = this.location
-                arry[7] = this.image
-                console.log(arry)
+                if (this.restaurantType != '' && this.opendate.length <= 5 && this.closedate.length <= 5){
+                    arry.push(this.restaurantName)
+                    arry.push(this.restaurantType)
+                    arry.push(this.description)
+                    arry.push(this.location)
+                    arry.push(this.opendate)
+                    arry.push(this.closedate)
 
-                //useSignUpForm(arry[0], arry[1], arry[2],arry[3],arry[4],arry[5],arry[6],arry[7])
+                    let buff = JSON.stringify(arry)
+                    localStorage.setItem("h1",buff)
+                }
+                else{
+                    alert("please enter filed")
+                }
+                navigateTo("/3")
+            },
+            goBack(){
+                navigateTo("/")
             }
 
         },
         mounted: function(){
             this.$nextTick(this.haveLocalStorage())
-            this.$nextTick(this.setDropDown())
+            this.$nextTick(this.setTypeDropDown())
             this.$nextTick(this.islogin())
+            this.$nextTick(this.setHours())
+            this.$nextTick(this.setMinutes())
         }
     }
 </script>
