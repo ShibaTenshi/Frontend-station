@@ -1,4 +1,5 @@
 <template>
+    <Header :logo="true" :logout="true"/>
     <h1>TableAvalibility</h1>
 </template>
 
