@@ -81,7 +81,7 @@
       .
       .
       */
-      requestSignup(){
+      requestSignup(){ //check email already use not complete
         this.getCheckBox()
         const buff = localStorage.getItem("h1")
         let form = JSON.parse(buff)
@@ -89,9 +89,11 @@
         
         const requestApi = async () => {
           const data = await useSignUpForm(form[0],form[1],form[2],form[3],form[4],form[5],form[6],"","","",form[7],form[8],this.openDay)
-          localStorage.setItem("refer",data)
+          await localStorage.setItem("refer",data)
+          console.log(data)
         }
         requestApi()
+        navigateTo('/authentication')
       }
     },
     mounted: function() {

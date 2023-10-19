@@ -1,0 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+input {
+    padding: 10px;
+    border: solid 1px gray;
+}
+
+button {
+    background-color: tomato;
+}
