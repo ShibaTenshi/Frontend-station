@@ -6,10 +6,15 @@
         <div class="header">
             <nav>
                 <ul>
-                    <li class="logo">
-                        <img class="imageLogo" src="../assets/RestaurantLogo.png" alt="" style="background: transparent;">
-                        <NuxtLink to="/usrs" v-if="logo" class="namelogo" style="color: white;">ShibaStation</NuxtLink>
-                    </li>
+                    <div class="head">
+                        <li class="logo">
+                            <img class="imageLogo" src="../assets/RestaurantLogo.png" alt="" style="background: transparent;">
+                            <NuxtLink to="/usrs" v-if="logo" class="namelogo" style="color: white;">ShibaStation</NuxtLink>
+                        </li>
+                        <li class="home">
+                            <NuxtLink to="/usrs" v-if="home" style="color: white; text-decoration: none; background-color: transparent;">Home</NuxtLink>
+                        </li>
+                    </div>
                     <div class="menu">
                         <li>
                         <NuxtLink to="/login" v-if="login" class="menulogin" style="color: white;">Login</NuxtLink>
@@ -32,7 +37,8 @@
     logo: Boolean,
     signupBtn: Boolean,
     login: Boolean,
-    logout: Boolean
+    logout: Boolean,
+    home: Boolean
     
   })
   
@@ -79,20 +85,33 @@
     }
 
     /*logo*/
-    ul .logo{
+    .head {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        padding: 20px;
+        background-color: transparent;
+    }
+    .head li{
+        margin-left: 45px;
+    }
+    .head .home{
+        background-color: transparent;
+    }
+    ul .head .logo{
         display: flex;
         align-items: center;
         margin-left: 1px;
     }
-    .logo .imageLogo{
+    .head .logo .imageLogo{
         width: 40px;
         margin-bottom: 10px;
     }
-    .logo {
+    .head .logo {
         background-color: transparent;
        
     }
-    .namelogo{
+    .head .namelogo{
         margin-left: 10px;
         background-color: transparent;
         text-decoration: none;
@@ -125,9 +144,11 @@
     .logoutButton{ 
         background-color: transparent;
         transition: 0.35s;
+        cursor: pointer;
     }
     .logoutButton:hover{
         color: rgb(58, 73, 44);
         transition: 0.35s;
+        cursor: pointer;
     }
 </style>

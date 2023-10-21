@@ -1,5 +1,5 @@
 <template>
-    <Header :logo="true" :logout="true"/>
+    <Header :logo="true" :logout="true" :home="true"/>
     <h1>Manages</h1>
 </template>
 
