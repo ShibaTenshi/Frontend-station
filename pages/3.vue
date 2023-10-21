@@ -53,6 +53,12 @@
           navigateTo('/usrs')
         }
       },
+      haveLocalStorage(){
+                const arr = localStorage.getItem("h1")
+                if (arr == null){
+                    navigateTo('/')
+                }
+            },
       setReferCode(){
         const referCode = localStorage.setItem("refer","")
       },
@@ -119,6 +125,7 @@
         this.$nextTick(this.islogin())
         this.$nextTick(this.setCheckBox())
         this.$nextTick(this.setReferCode())
+        this.$nextTick(this.haveLocalStorage())
     }
   }
 </script>

@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+.content {
+    border: 2px solid rgb(177, 206, 1);
+    border-radius: 10px;
+    margin: 10px;
+    padding: 100px 80px;
+    box-shadow: 10px 10px rgb(226, 226, 226);
+    margin-top: 5rem;
+    margin-left: 8rem;
+    margin-right: 8rem;
+
+}
+
+.head{
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pic {
+    display: flex;
+    align-items: center;
+}
+.calendar {
+    width: 70px;
+    height: 70px;
+    margin: 10px;
+    background-color: transparent;
+}
+.chef{
+    width: 200px;
+    margin: 10px;
+    background-color: transparent;
+}
+
+
+.head_text .i{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+
+.text p {
+    font-size: 18px;
+}
+
+@media screen and (max-width: 450px){
+    .content {
+        border: 2px solid rgb(177, 206, 1);
+        border-radius: 10px;
+        margin: 10px;
+        padding: 100px 80px;
+        box-shadow: 10px 10px rgb(226, 226, 226);
+        margin-top: 2rem;
+
+    }
+    .calendar {
+        width: 20px;
+        height: 20px;
+        margin: 10px;
+    }
+    .pic .chef{
+        width: 150px;
+        margin: 10px;
+    }
+
+
+    .content .head_text .i{
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .content .head_text .ii{
+        font-size: 13px;
+    }
+
+    .content .text p {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 750px){
+    .content {
+        border: 2px solid rgb(177, 206, 1);
+        border-radius: 10px;
+        margin: 10px;
+        padding: 100px 80px;
+        box-shadow: 10px 10px rgb(226, 226, 226);
+        margin-top: 2rem;
+
+    }
+    .calendar {
+        width: 20px;
+        height: 20px;
+        margin: 10px;
+    }
+    .pic .chef{
+        width: 150px;
+        margin: 10px;
+    }
+
+
+    .content .head_text .i{
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .content .head_text .ii{
+        font-size: 13px;
+    }
+
+    .content .text p {
+        font-size: 15px;
+    }
+}
+@media screen and (max-width: 450px){
+
+    .calendar {
+        width: 20px;
+        height: 20px;
+        margin: 10px;
+    }
+    .pic .chef{
+        width: 70px;
+        margin: 10px;
+    }
+}
+
+@media screen and (min-width: 1500px){
+    .content{
+        margin-left: 25rem;
+        margin-right: 25rem;
+    }
+}
