@@ -11,12 +11,16 @@
                     <p>Username</p>
                     <li><input type="text" name="usernameField" id="usernameField"></li>
                 </div>
+                <p class="error" id="p1">{{ usernameError }}</p>
                 <div class="textField">
                     <p>Password</p>
                     <li><input type="password" name="passwdField" id="passwdField" @keydown.enter="loginRequest"></li>
                 </div>
+                <p class="error" id="p2">{{ passwordError }}</p>
             </ul>
+            <br>
             <button v-on:click="loginRequest" class="AcceptBt">Accept</button>
+            <br><br>
             <p class="signupLink">If you don’t have your account, Please click <NuxtLink to="/">Sign-Up</NuxtLink></p>
         </div>
     </div>
@@ -27,7 +31,9 @@
     data() {
         return {
             username: null,
-            password: null
+            password: null,
+            usernameError: "",
+            passwordError: "",
         };
     },
     methods: {
@@ -65,12 +71,26 @@
             }
             else{
                 this.clearPaswordField()
-                alert("input must not empty")
+                //alert("input must not empty")
+                if (this.getUsernameField() == ""){
+                    document.getElementById("p1").style.color = "tomato"
+                    document.getElementById("usernameField").style.borderColor = "tomato"
+                    this.usernameError = "Request username"
+                }
+                if (this.getPasswordField() == ""){
+                    document.getElementById("p2").style.color = "tomato"
+                    document.getElementById("passwdField").style.borderColor = "tomato"
+                    this.passwordError = "Request password"
+                }
             }
         },
 
         //main function
         async authentication(){
+            document.getElementById("usernameField").style.borderColor = "black"
+            document.getElementById("passwdField").style.borderColor = "black"
+            this.usernameError = ""
+            this.passwordError = ""
             const response = await useAuth(this.getUsernameField(), this.getPasswordField())
             const pattern = /Error:/g
             const data = response.data
@@ -81,8 +101,27 @@
                 navigateTo('/usrs')
             }
             else{
-                alert(response.data)
+                //alert(response.data)
+                const word =response.data
+                //alert(word.includes('User'))
+                if (word.includes("User")){
+                    document.getElementById("usernameField").style.borderColor = "tomato"
+                    this.usernameError = word.substring(6)
+                }
+                if (word.includes("Password")){
+                    document.getElementById("passwdField").style.borderColor = "tomato"
+                    this.passwordError = word.substring(6)
+                }
             }
+            // if (response.status == 200){
+            //     const cookie = useCookie('token')
+            //     cookie.value = response.data
+            //     this.password = null
+            //     //navigateTo('/usrs')
+            // }
+            // else{
+            //     alert("username or password not correct")
+            // }
         },
     },
     mounted: function() {
