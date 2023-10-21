@@ -10,8 +10,8 @@ export async function useIsLogin() {
         params: {
             token: cookie.value
         }
-    }).then((response) => {status = response.status}).catch((error) =>{
-        status = error.response.status
+    }).then((response) => {status = response}).catch((error) =>{
+        status = error.response
     })
 
     return status

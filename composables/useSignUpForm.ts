@@ -25,9 +25,9 @@ export const useSignUpForm = async (nameForm:string, emailF:string, usernameF:st
     }
     ).then((response) => {
         //console.log(response.data)
-        return response.data;
+        return response.data
     }).catch((error) => {
-        return error;
+        return error.data;
     })
 
     return data

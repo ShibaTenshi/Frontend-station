@@ -35,6 +35,7 @@
         </ul>
       </div>
       <button v-on:click="requestSignup">Request</button>
+      <button v-on:click="goBack">Back</button>
     </div>
 </template>
 
@@ -51,6 +52,9 @@
         if (cookie.value != ""){
           navigateTo('/usrs')
         }
+      },
+      setReferCode(){
+        const referCode = localStorage.setItem("refer","")
       },
       setCheckBox(){
         for (let index = 1; index <= 7; index++) {
@@ -82,6 +86,7 @@
       .
       */
       requestSignup(){ //check email already use not complete
+        const pattern = /Error:/g
         this.getCheckBox()
         const buff = localStorage.getItem("h1")
         let form = JSON.parse(buff)
@@ -89,16 +94,31 @@
         
         const requestApi = async () => {
           const data = await useSignUpForm(form[0],form[1],form[2],form[3],form[4],form[5],form[6],"","","",form[7],form[8],this.openDay)
-          await localStorage.setItem("refer",data)
+          //console.log(data.match(pattern))
+          //console.log(data)
+          //console.log(typeof(data))
+
+          if (typeof(data) == "number"){
+            await localStorage.setItem("refer",data)
+            
+            setTimeout(await navigateTo('/authentication'), 1000)
+          }
+          else{
+            alert(data)
+            await localStorage.setItem("refer",'')
+          }
           console.log(data)
         }
         requestApi()
-        navigateTo('/authentication')
+      },
+      goBack(){
+        navigateTo('/2')
       }
     },
     mounted: function() {
         this.$nextTick(this.islogin())
         this.$nextTick(this.setCheckBox())
+        this.$nextTick(this.setReferCode())
     }
   }
 </script>

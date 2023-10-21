@@ -207,20 +207,20 @@
                 let arry = JSON.parse(buff)
 
                 if (this.restaurantType != '' && this.opendate.length <= 5 && this.closedate.length <= 5){
-                    arry.push(this.restaurantName)
-                    arry.push(this.restaurantType)
-                    arry.push(this.description)
-                    arry.push(this.location)
-                    arry.push(this.opendate)
-                    arry.push(this.closedate)
+                    arry[3] = this.restaurantName
+                    arry[4] = this.restaurantType
+                    arry[5] = this.description
+                    arry[6] = this.location
+                    arry[7] = this.opendate
+                    arry[8] = this.closedate
 
                     let buff = JSON.stringify(arry)
                     localStorage.setItem("h1",buff)
+                    navigateTo("/3")
                 }
                 else{
                     alert("please enter filed")
                 }
-                navigateTo("/3")
             },
             goBack(){
                 navigateTo("/")

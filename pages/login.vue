@@ -72,14 +72,16 @@
         //main function
         async authentication(){
             const response = await useAuth(this.getUsernameField(), this.getPasswordField())
-            if (response.status == 200){
+            const pattern = /Error:/g
+            const data = response.data
+            if (!data.match(pattern)){
                 const cookie = useCookie('token')
                 cookie.value = response.data
                 this.password = null
                 navigateTo('/usrs')
             }
             else{
-                alert("username or password not correct")
+                alert(response.data)
             }
         },
     },

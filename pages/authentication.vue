@@ -24,22 +24,45 @@ export default {
         }
     },
     methods: {
+        islogin(){
+        const cookie = useCookie('token')
+        if (cookie.value != ""){
+          navigateTo('/usrs')
+        }
+      },
         getOtpField(){ return document.querySelector("input[name=otpField]").value},
         setReferCode(){
             const referCode = localStorage.getItem("refer")
             this.refer = referCode
         },
+        checkHaveReferCode(){
+            const referCode = localStorage.getItem("refer")
+            if (referCode == ""){
+                navigateTo('/3')
+            }
+        },
         submit(){
             console.log(this.getOtpField())
             const request = async () => {
-                await useOtp(this.refer,this.getOtpField())
+                const data = await useOtp(this.refer,this.getOtpField())
+                //alert(data.data)
+
+                if (data.data == ""){
+                    localStorage.removeItem('h1')
+                    alert("Request Signup Successful")
+                    setTimeout(await navigateTo('/signupRecive'), 500)
+                }
+                else{
+                    alert(data.data)
+                }
             }
-        request()
+            request()
         }
     },
     mounted: function(){
         this.$nextTick(this.setReferCode())
-        //this.$nextTick(navigateTo('/authentication'))
+        this.$nextTick(this.islogin())
+        this.$nextTick(this.checkHaveReferCode())
     }
 }
 </script>
