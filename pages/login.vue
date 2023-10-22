@@ -68,6 +68,7 @@
             if (this.validate()){
                 this.authentication()
                 this.clearPaswordField()
+                this.usernameError = ""
             }
             else{
                 this.clearPaswordField()
@@ -106,10 +107,12 @@
                 //alert(word.includes('User'))
                 if (word.includes("User")){
                     document.getElementById("usernameField").style.borderColor = "tomato"
+                    document.getElementById("p1").style.color = "tomato"
                     this.usernameError = word.substring(6)
                 }
                 if (word.includes("Password")){
                     document.getElementById("passwdField").style.borderColor = "tomato"
+                    document.getElementById("p2").style.color = "tomato"
                     this.passwordError = word.substring(6)
                 }
             }
