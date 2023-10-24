@@ -250,7 +250,9 @@ const OnEnvSubmit = async () => {
 
           if (typeof(data) == "number"){
             await localStorage.setItem("refer",data)
-            
+            setTimeout(() => {
+              navigateTo("/authentication")
+            }, 500);
           }
           else{
             alert(data)
