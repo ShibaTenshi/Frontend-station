@@ -2,94 +2,142 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: white;
-    font-family: sans-serif;
+    font-family: Arial, sans-serif;
 }
-
-input {
-    padding: 15px;
-    /* font-size: 18px;
-    background-color: white;
-    width: 16rem;
-    height: 1.8rem;
-    border-radius: 3rem;
-    border: 1px solid black;
-    outline: none;
-    transition: 0.35s; */
-    background-color: whitesmoke;
-}
-input:hover{
-    transition: 0.35s;
-    border-color: rgb(151, 151, 151);
-}
-
-/* .detailBox {
-    max-width: 950px;
-    max-height: 550px;
-
-    min-width: 600px;
-    min-height: 400px;
-    margin-top: 6rem;
-    margin-left: 15rem;
-    margin-right: 15rem;
-    border: 2px solid rgb(177, 206, 1);
-    border-radius: 20px;
-    box-shadow: 10px 10px rgb(226, 226, 226);
-} */
-
-.detailBox .logo{
-    margin: 2rem;
+/*wrapper*/
+.wrapper {
     display: flex;
-    align-items: center;
     justify-content: center;
-}
-.detailBox .logo img{
-    width: 70px;
-    margin: 10px;
+    align-items: center;
 }
 
-ul {
+/*box*/
+.wrapper .detailBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px rgb(177,206,1);
+    margin: 5rem 10px 5rem 10px;
+    border-radius: 10px;
+    width: 40rem;
+    box-shadow: 5px 5px rgb(225, 220, 220);
+}
+
+/*logo*/
+.wrapper .detailBox .logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0 1rem 0;
+}
+.wrapper .detailBox .logo .signup p{
+    font-weight: normal;
+    font-size: 3vh;
+}
+.wrapper .detailBox .logo img{
+    width: 120px;
+    margin-right: 10px;
+}
+
+@media only screen and (max-width: 360px){
+    .wrapper .detailBox .logo img{
+        width: 80px;
+        margin-right: 2px;
+    }
+    .wrapper .detailBox .logo .signup p{
+        font-size: 2vh;
+    }
+}
+
+/*form*/
+.wrapper .detailBox .form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper .detailBox .form ul li{
     list-style: none;
 }
-
-
-.detailBox .form ul li{
+.wrapper .detailBox .form ul .form_1{
     display: flex;
-    justify-content: space-between;
-    margin-left: 8rem;
-    margin-right: 6rem;
-    margin-bottom: 2rem;
-
+    flex-direction: row;
 }
-
-.detailBox .form ul {
-    margin: 10px;
+/*name*/
+.wrapper .detailBox .form ul li p{
+    font-size: 19px;
+    margin-left: 10px;
 }
-
-.enter{
-    margin: 15px;
-}
-
-button{
-    margin: 10px;
-    background-color: rgb(148, 166, 132);
-    font-size: 14px;
-    padding: 10px;
-    width: 8rem;
+/*input*/
+.wrapper .detailBox .form ul li input{
+    margin: 10px 10px 1rem 10px;
+    border: solid 1px rgb(202,202,202);
     border-radius: 10px;
-    transition: 0.35s;
+    height: 2rem;
+    padding: 20px;
+}
+.wrapper .detailBox .form ul li select{
+    margin: 10px 10px 1rem 10px;
+    border: solid 1px rgb(202,202,202);
+    border-radius: 10px;
+    height: 2rem;
+    width: 6rem;
+    font-size: 18px;
+    color: rgb(102,102,102);
+    padding-left: 10px;
 }
 
 
-.detailBox .form .enter {
+/*footer*/
+.wrapper .detailBox .footer{
     display: flex;
-    justify-content: right;
-    margin-right: 5.8rem;
+    flex-direction: row;
 }
-button p{
-    background-color: transparent;
+/*button*/
+.wrapper .detailBox .footer button{
+    border: none;
+    border-radius: 10px;
+    width: 6rem;
+    height: 3rem;
+    margin: 1rem 1rem 1rem 1rem;
+    font-weight: bold;
 }
-button:hover{
+/*button enter*/
+.wrapper .detailBox .footer .enter button{
+    background-color: rgb(148,166,132);
     transition: 0.35s;
-    background-color: rgb(121, 142, 102);
+}
+.wrapper .detailBox .footer .enter button:hover{
+    background-color: rgb(121,133,111);
+    transition: 0.35s;  
+}
+
+/*button back*/
+.wrapper .detailBox .footer .back button{
+    background-color: rgb(255, 168, 54);
+    transition: 0.35s;  
+}
+.wrapper .detailBox .footer .back button:hover{
+    background-color: rgb(223, 154, 64);
+    transition: 0.35s;  
+}
+
+@media only screen and (max-width: 360px){
+    .wrapper .detailBox .logo img{
+        width: 80px;
+        margin-right: 2px;
+    }
+    .wrapper .detailBox .logo .signup p{
+        font-size: 2vh;
+    }
+}
+
+@media only screen and (max-width: 430px){
+    .wrapper .detailBox .form ul .form_1{
+        flex-direction: column;
+    }
+    .wrapper .detailBox .footer{
+        display: flex;
+        flex-direction: column;
+    }
 }

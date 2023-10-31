@@ -22,7 +22,7 @@
                 </li>
                 <li>
                     <p>username</p>
-                    <input type="text" name="usernameField" id="usernameField">
+                    <input type="text" name="usernameField" id="usernameField"  @keydown.enter="signupForm">
                 </li>
             </ul>
             <div class="enter">

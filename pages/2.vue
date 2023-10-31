@@ -1,60 +1,75 @@
 <template>
     <Header :logo="true" :login="true"/>
-    <div class="detailBox" id="detailBox">
-        <div class="logo">
-            <img src="@/assets/login.png" alt="">
-            <div class="signup">
-                <p>Restaurant</p>
-                <p>Detail</p>
+
+    <div class="wrapper">
+        <div class="detailBox" id="detailBox">
+            <div class="logo">
+                <img src="@/assets/kisspng-chef-s-uniform.png" alt="">
+                <div class="signup">
+                    <p>Restaurant</p>
+                    <p>Detail</p>
+                </div>
             </div>
-        </div>
-        <div class="form">
-            <ul>
-                <li>
-                    <p>Restaurant Name</p>
-                    <input type="text" name="restaurantNameField" id="restaurantNameField" class="text">
-                </li>
-                <li>
-                    <p>Restaurant Type</p>
-                    <select name="type" id="typeDropDown" v-on:change="getTypeDropDown">
-                        <option value="">Select Type Restaurant</option>
-                    </select>
-                </li>
-                <li>
-                    <p>Description</p>
-                    <input type="text" name="descriptionField" id="descriptionField" class="text">
-                </li>
-                <li>
-                    <p>Location</p>
-                    <input type="text" name="locationField" id="locationField" class="text">
-                </li>
-                <li>
-                    <p>Open Date</p>
-                    <select name="type" id="hours" v-on:change="getOpenHoursDropDown">
-                        <option value="">Select Hours</option>
-                    </select>
-                    <select name="type" id="minutes" v-on:change="getOpenMinutesDropDown">
-                        <option value="">Select Minutes</option>
-                    </select>
-                </li>
-                <li>
-                    <p>Close Date</p>
-                    <select name="type" id="hours2" v-on:change="getCloseHoursDropDown">
-                        <option value="">Select Hours</option>
-                    </select>
-                    <select name="type" id="minutes2" v-on:change="getCloseMinutesDropDown">
-                        <option value="">Select Minutes</option>
-                    </select>
-                </li>
-            </ul>
-            <div class="enter">
-                <button v-on:click="saveForm"><p>Next</p></button>
+            <div class="form">
+                <ul>
+                    <div class="form_1">
+                        <div>
+                            <li>
+                                <p>Restaurant Name</p>
+                                <input type="text" name="restaurantNameField" id="restaurantNameField" class="text">
+                            </li>
+                        </div>
+                        <div>
+                            <li>
+                                <p>Type</p>
+                                <select name="type" id="typeDropDown" v-on:change="getTypeDropDown">
+                                    <option value="">Select Type</option>
+                                </select>
+                            </li>
+                        </div>
+                    </div>
+
+                    <li>
+                        <p>Description</p>
+                        <input type="text" name="descriptionField" id="descriptionField" class="text">
+                    </li>
+                    <li>
+                        <p>Location</p>
+                        <input type="text" name="locationField" id="locationField" class="text">
+                    </li>
+                    <li>
+                        <p>Open Date</p>
+                        <select name="type" id="hours" v-on:change="getOpenHoursDropDown">
+                            <option value="">Hours</option>
+                        </select>
+                        <select name="type" id="minutes" v-on:change="getOpenMinutesDropDown">
+                            <option value="">Minutes</option>
+                        </select>
+                    </li>
+                    <li>
+                        <p>Close Date</p>
+                        <select name="type" id="hours2" v-on:change="getCloseHoursDropDown">
+                            <option value="">Hours</option>
+                        </select>
+                        <select name="type" id="minutes2" v-on:change="getCloseMinutesDropDown">
+                            <option value="">Minutes</option>
+                        </select>
+                    </li>
+                </ul>
             </div>
-            <div class="back">
-                <button v-on:click="goBack">Back</button>
+
+            <div class="footer">
+                <div class="back">
+                    <button v-on:click="goBack">Back</button>
+                </div>
+                <div class="enter">
+                    <button v-on:click="saveForm">Next</button>
+                </div>
             </div>
+
         </div>
     </div>
+
 </template>
 
 <script>

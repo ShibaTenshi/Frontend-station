@@ -9,15 +9,21 @@
                     <div class="head">
                         <li class="logo">
                             <img class="imageLogo" src="../assets/RestaurantLogo.png" alt="" style="background: transparent;">
-                            <NuxtLink to="/usrs" v-if="logo" class="namelogo" style="color: white;">ShibaStation</NuxtLink>
+                            <NuxtLink to="/usrs" v-if="logo" class="namelogo">
+                                <p style="background-color: transparent; color: white;">ShibaStation</p>
+                            </NuxtLink>
                         </li>
                         <li class="home">
-                            <NuxtLink to="/usrs" v-if="home" style="color: white; text-decoration: none; background-color: transparent;">Home</NuxtLink>
+                            <NuxtLink to="/usrs" v-if="home">
+                                <p style="background-color: transparent; color: white;">Home</p>
+                            </NuxtLink>
                         </li>
                     </div>
                     <div class="menu">
                         <li>
-                        <NuxtLink to="/login" v-if="login" class="menulogin" style="color: white;">Login</NuxtLink>
+                        <NuxtLink to="/login" v-if="login" class="menulogin">
+                            <p style="background-color: transparent; color: white;">Login</p>
+                        </NuxtLink>
                         </li>
                         <li>
                         <button v-if="logout" v-on:click="islogout" class="logoutButton" style="color: white;">Logout</button>
@@ -89,7 +95,7 @@
         display: flex;
         align-items: center;
         justify-content: space-evenly;
-        padding: 20px;
+        padding-left: 10px;
         background-color: transparent;
     }
     .head li{
@@ -106,6 +112,7 @@
     .head .logo .imageLogo{
         width: 40px;
         margin-bottom: 10px;
+        margin-right: 5px;
     }
     .head .logo {
         background-color: transparent;
@@ -150,5 +157,11 @@
         color: rgb(58, 73, 44);
         transition: 0.35s;
         cursor: pointer;
+    }
+
+    @media only screen and (max-width: 370px){
+        p{
+            font-size: 17px;
+        }
     }
 </style>
