@@ -2,95 +2,101 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: white;
-    font-family: sans-serif;
+    font-family: Arial, sans-serif;
 }
-
-.signUpBox{
-    margin: 6rem;
-    margin-left: 20rem;
-    margin-right: 20rem;
-    border: 2px solid rgb(177, 206, 1);
-    border-radius: 20px;
-    box-shadow: 10px 10px rgb(226, 226, 226);
-    display: block;
-}
-
-.signUpBox .logo{
-    margin: 10px;
-    margin-top: 2rem;
-    text-align: center;
+.wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.signUpBox .logo img{
-    width: 70px;
-    margin: 10px;
-}
-.signUpBox .logo .signup p{
-    font-size: 20px;
-    font-weight: bold;
-    text-align: left;
+/**/
+.wrapper .box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px rgb(177,206,1);
+    margin: 5rem 10px 5rem 10px;
+    border-radius: 10px;
+    width: 40rem;
 }
 
-.form{
-    margin: 10px;
+/*header*/
+.wrapper .box .logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 1rem 1rem 1rem;
 }
-.form ul {
-    margin: 10px;
+.wrapper .box .logo img {
+    width: 120px;
+    margin-right: 10px;
 }
-.form ul li{
-    margin: 2rem;
-    justify-content:space-between;
+.wrapper .box .logo .signup p{
+    font-weight: normal;
+    font-size: 3vh;
+}
+@media only screen and (max-width: 360px){
+    .wrapper .box .logo img {
+        width: 80px;
+        margin-right: 2px;
+    }
+    .wrapper .box .logo .signup p{
+        font-size: 2vh;
+    }
+}
+
+/*form*/
+li{
     list-style: none;
-    display:flex;
+}
+.wrapper .box .form {
+    margin: 1rem 1rem 1rem 1rem;
+}
+/*name*/
+.wrapper .box .form ul li p{
+    margin-left: 10px;
+}
+/*input*/
+.wrapper .box .form ul li input  {
+    margin: 10px 10px 1rem 10px;
+    border: solid 1px rgb(202,202,202);
+    border-radius: 10px;
+    height: 2rem;
+    padding: 20px;
+}
+
+/*button*/
+.wrapper .box .form .enter{
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
-.form ul li p{
-    margin-left: 20%;
-}
-.form ul li input{
-    margin-right: 25%;
-}
-
-input{
-    padding: 15px;
-    font-size: 18px;
-    background-color: white;
-    width: 16rem;
-    height: 1.8rem;
-    border-radius: 3rem;
-    border: 1px solid black;
-    outline: none;
-    transition: 0.35s;
-}
-input:hover{
-    transition: 0.35s;
-    border-color: rgb(151, 151, 151);
-}
-
-.form .enter{
-    display: flex;
-    justify-content:right;
-    margin-right: 2.7rem;
-}
-
-.form .enter button p{
-    font-weight: bold;
-    font-size: 14px;
+.wrapper .box .form .enter button p{
     background-color: transparent;
 }
-.form .enter button{
-    margin: 10px;
-    background-color: rgb(148, 166, 132);
-    font-size: 14px;
-    padding: 10px;
-    width: 8rem;
+.wrapper .box .form .enter button{
+    margin: 1rem 1rem 1rem 1rem;
+    border: none;
     border-radius: 10px;
+    background-color: rgb(148,166,132);
+    width: 5rem;
+    height: 2rem;
     transition: 0.35s;
+    font-weight: bold;
 }
-.form .enter button:hover{
+.wrapper .box .form .enter button:hover{
     transition: 0.35s;
-    background-color: rgb(121, 142, 102);
+    background-color: rgb(121,133,111);
+    width: 5rem;
+    height: 2rem ;
+}
+
+@media only screen and (max-width: 340px){
+    .wrapper .box .form ul li input  {
+        width: 8rem;
+        height: 15px;
+        padding: 15px;
+    }
 }

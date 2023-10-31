@@ -1,6 +1,6 @@
 export async function useOtp(refer:string, otp:string) {
     const axios = useNuxtApp().$axios
-    const api = 'http://localhost:5041/otp'
+    const api = 'http://10.147.17.253:5041/otp'
 
     const data = await axios.post(api,null ,{
         params:{

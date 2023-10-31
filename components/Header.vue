@@ -112,7 +112,7 @@
        
     }
     .head .namelogo{
-        margin-left: 10px;
+        margin-left: 1px;
         background-color: transparent;
         text-decoration: none;
         color: black;
@@ -125,7 +125,7 @@
         background-color: transparent;
     }
     .menu li {
-        margin-right: 10px;
+        margin-right: 1px;
         background-color: transparent;
     }
     .menulogin{

@@ -1,13 +1,15 @@
 <template>
     <Header :logo="true" :login="true"/>
-    <div class="signUpBox" id="signUpBox1">
+    <div class="wrapper">
+    <div class="box">
         <div class="logo">
-            <img src="@/assets/login.png" alt="">
+            <img src="@/assets/kisspng-chef-s-uniform.png" alt="">
             <div class="signup">
                 <p>Sign-Up</p>
                 <p>as Restaurant</p>
             </div>
         </div>
+
         <div class="form">
             <ul>
                 <li>
@@ -27,6 +29,7 @@
                 <button v-on:click="signupForm"><p>Next</p></button>
             </div>
         </div>
+    </div>
     </div>
 </template>
 
@@ -78,7 +81,9 @@
 
                 if (checkEmail(email) == 0 && email !== ""){
                     status = 0
-                    alert("email in valid")
+                    alert("The email format is incorrect.")
+                    document.getElementById("emailField").style.borderColor = "tomato"
+                    
                 }
 
                 if (name === "" || email === "" || username === ""){
