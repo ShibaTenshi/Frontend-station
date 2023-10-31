@@ -88,6 +88,7 @@
 
                 if (name === "" || email === "" || username === ""){
                     status = 0
+                    alert("Incomplete information")
                 }
 
                 if (name !== "" && checkEmail(email) && username !== ""){
