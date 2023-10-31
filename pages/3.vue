@@ -1,58 +1,71 @@
 <template>
-  <Header :logo="true" :login="true"/>
-    <div>
+<Header :logo="true" :login="true"/>
+  <div class="wrapper">
+    <div class="wrapper1">
       <div class="date">
         <ul>
-          <li>
-            <p>Sunday</p>
-            <input type="checkbox" id="1" value="0">
-          </li>
-          <li>
-            <p>Monday</p>
-            <input type="checkbox" id="2" value="0">
-          </li>
-          <li>
-            <p>Tuesday</p>
-            <input type="checkbox" id="3" value="0">
-          </li>
-          <li>
-            <p>Wednesday</p>
-            <input type="checkbox" id="4" value="0">
-          </li>
-          <li>
-            <p>Thursday</p>
-            <input type="checkbox" id="5" value="0">
-          </li>
-          <li>
-            <p>Friday</p>
-            <input type="checkbox" id="6" value="0">
-          </li>
-          <li>
-            <p>Saturday</p>
-            <input type="checkbox" id="7" value="0">
-          </li>
-
+          <div class="q1">
+            <li>
+              <p>Sunday</p>
+              <input type="checkbox" id="1" value="0" >
+            </li>
+            <li>
+              <p>Monday</p>
+              <input type="checkbox" id="2" value="0">
+            </li>
+            <li>
+              <p>Tuesday</p>
+              <input type="checkbox" id="3" value="0">
+            </li>
+            <li>
+              <p>Wednesday</p>
+              <input type="checkbox" id="4" value="0">
+            </li>
+          </div>
+          <div class="q2">
+            <li>
+              <p>Thursday</p>
+              <input type="checkbox" id="5" value="0">
+            </li>
+            <li>
+              <p>Friday</p>
+              <input type="checkbox" id="6" value="0">
+            </li>
+            <li>
+             <p>Saturday</p>
+             <input type="checkbox" id="7" value="0">
+            </li>
+          </div>
         </ul>
       </div>
+      </div>
+    </div>
 
+    <div class="wrapper2">
       <div class="img">
-        <p>logo</p>
-        <input type="file" accept="image/png" id="imageLogo" class="imageLogo" @change="onLogoChangeFile">
-
-        <p>Menu</p>
-        <input type="file" accept="image/png" id="imageMenu" class="imageMenu"  multiple @change="onMenuChangeFile" >
-        <div class="showImageMenuBox" id="showImageMenuBox">
+        <div>
+          <p>Logo Image</p>
+          <input type="file" accept="image/png" id="imageLogo" class="imageLogo" @change="onLogoChangeFile">
         </div>
 
-        <p>Enviroment</p>
-        <input type="file" accept="image/png" id="imageMenu" class="imageMenu"  multiple @change="onEnvChangeFile" >
-        <div class="showImageEnvBox" id="showImageEnvBox">
+        <div>
+          <p>Menu Image</p>
+          <input type="file" accept="image/png" id="imageMenu" class="imageMenu"  multiple @change="onMenuChangeFile" >
+          <div class="showImageMenuBox" id="showImageMenuBox">
+          </div>
+        </div>
+
+        <div>
+          <p>Enviroment Image</p>
+          <input type="file" accept="image/png" id="imageMenu" class="imageMenu"  multiple @change="onEnvChangeFile" >
+          <div class="showImageEnvBox" id="showImageEnvBox">
+          </div>
         </div>
       </div>
-
+    </div>
+    <!-- async () => {await onLogoSumbit();await OnMenuSubmit();await OnEnvSubmit(); if (haveImage()){requestSignup()}} -->
       <button v-on:click="async () => {await onLogoSumbit();await OnMenuSubmit();await OnEnvSubmit(); if (haveImage()){requestSignup()}}">Request</button>
       <button v-on:click="goBack">Back</button>
-    </div>
 </template>
 
 <script setup lang="ts">
@@ -103,26 +116,56 @@ function haveImage():boolean {
       }
     }
 
-// menu image
+//=== menu image ===
 const fileMenu = ref<File | null>(null);
 const selectImageMenu:File[] = []
 
+let counterMenu:number = 0
 const onMenuChangeFile = (event: Event) =>{
   const [_file] = (event.target as HTMLInputElement).files as FileList
   selectImageMenu[selectImageMenu.length] = _file
   fileMenu.value = _file
   if (fileMenu.value){
     statusMenu = 1
-  }
-  else{
+  }else{
     statusMenu = 0
   }
 
   //show list of image
   const div = document.getElementById("showImageMenuBox")
+
+  //div of filename
+  const divFile = document.createElement("div")
+  divFile.style.display = "flex"
+  divFile.style.justifyContent = "space-between"
+  divFile.style.margin = "10px"
+  divFile.id = "Menu" + counterMenu.toString()
+
+  //filename show
   let p = document.createElement("p")
+  p.style.margin = "5px"
+  p.style.fontSize = "16px"
   p.innerHTML = _file.name
-  div?.append(p)
+
+  //button delete
+  let btnDel = document.createElement("BUTTON")
+  btnDel.addEventListener('click',() =>{document.getElementById(divFile.id)?.remove()
+    counterMenu -= 1
+    selectImageMenu.splice(Number((divFile.id).replace('Menu','')),1)
+    console.log(selectImageMenu.length)})
+  btnDel.style.backgroundColor = "tomato"
+  btnDel.style.color = "white"
+  btnDel.style.borderRadius = "10px"
+  btnDel.innerHTML = "ลบ"
+  btnDel.style.fontSize = "12px"
+  btnDel.style.width = "2rem"
+
+  divFile.append(p)
+  divFile.append(btnDel)
+
+  //show to 
+  div?.append(divFile)
+  counterMenu += 1
 }
 const OnMenuSubmit = async () => {
   if (selectImageMenu.length == 0){
@@ -130,6 +173,7 @@ const OnMenuSubmit = async () => {
     return 0
   }
 
+  // statusLogo == 1 && statusMenu == 1 && statusEnv == 1
   if(statusLogo == 1 && statusMenu == 1 && statusEnv == 1){
     for (let index = 0; index < selectImageMenu.length; index++) {
       fileMenu.value = selectImageMenu[index]
@@ -138,6 +182,7 @@ const OnMenuSubmit = async () => {
         let form = JSON.parse(buff)
         const body = new FormData();
         body.append('file', fileMenu.value, fileMenu.value.name)
+        console.log(body)
         await $fetch('http://10.147.17.253:5034/restaurant/image/menu/'+ form[2],{ method: 'post', body })
       }catch(error){
         console.log(error)
@@ -147,26 +192,55 @@ const OnMenuSubmit = async () => {
   }
 }
 
-//env image
+//=== env image ===
 const fileEnv = ref<File | null>(null);
 const selectImageEnv:File[] = []
 
+let couterEnv:number = 0
 const onEnvChangeFile = (event: Event) =>{
   const [_file] = (event.target as HTMLInputElement).files as FileList
   selectImageEnv[selectImageEnv.length] = _file
   fileEnv.value = _file
   if (fileMenu.value){
     statusEnv = 1
-  }
-  else{
+  }else{
     statusEnv = 0
   }
 
   //show list of image
   const div = document.getElementById("showImageEnvBox")
+
+  //div of filename
+  const divEnv = document.createElement("div")
+  divEnv.style.display = "flex"
+  divEnv.style.justifyContent = "space-between"
+  divEnv.style.margin = "10px"
+  divEnv.id = "Env" + couterEnv.toString()
+
+  //filename show
   let p = document.createElement("p")
+  p.style.margin = "5px"
+  p.style.fontSize = "16px"
   p.innerHTML = _file.name
-  div?.append(p)
+
+  //button delete
+  let btnDel = document.createElement("BUTTON")
+  btnDel.addEventListener('click',() =>{document.getElementById(divEnv.id)?.remove()
+    couterEnv -= 1
+    selectImageEnv.splice(Number((divEnv.id).replace('Env','')),1)
+    console.log(selectImageEnv.length)})
+  btnDel.style.backgroundColor = "tomato"
+  btnDel.style.color = "white"
+  btnDel.style.borderRadius = "10px"
+  btnDel.innerHTML = "ลบ"
+  btnDel.style.fontSize = "12px"
+  btnDel.style.width = "2rem"
+
+  divEnv.append(p)
+  divEnv.append(btnDel)
+
+  div?.append(divEnv)
+  couterEnv += 1
 }
 const OnEnvSubmit = async () => {
   if (selectImageEnv.length == 0){
@@ -275,3 +349,5 @@ const OnEnvSubmit = async () => {
     }
   }
 </script>
+
+<style scoped src="@/assets/styles/imageUpload.css"></style>

@@ -223,6 +223,7 @@
                 }
             },
             goBack(){
+                localStorage.removeItem("h1")
                 navigateTo("/")
             }
 
