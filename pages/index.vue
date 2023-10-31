@@ -107,8 +107,7 @@
                         const signupForm = [this.name, this.email, this.username]
                         let buff = JSON.stringify(signupForm)
                         localStorage.setItem("h1",buff)
-                        //gotoPage2()
-                        location.replace("/2");
+                        navigateTo("/2")
                     }
                 } catch (e) {
                     console.log(e)
