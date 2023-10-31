@@ -18,7 +18,7 @@
 }
 .wrapper .date ul li{
     list-style: none;
-    margin: 12px 1rem 1rem 1rem;
+    margin: 10px 10px 10px 10px;
 }
 .wrapper .wrapper1 ul {
     margin-top: 1rem;
@@ -48,6 +48,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 1rem;
 }
 .wrapper2 .img{
     display: flex;
@@ -60,11 +61,47 @@
 }
 .wrapper2 .img div {
     margin: 1rem 0 1rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
+/*name menu image*/
 .wrapper2 .img div p{
     margin-bottom: 10px;
 }
+/*input file*/
+.wrapper2 .img div input[type="file"]::file-selector-button{
+    border: none;
+    width: 7rem;
+    height: 2rem;
+    border-radius: 10px;
+    color: whitesmoke;
+    background-color: tomato;
+    transition: 0.35s;
+    cursor: pointer;
+}
+.wrapper2 .img div .imageMenu{
+    background-color: transparent;
+    color: transparent;
+}
+.wrapper2 .img div input[type="file"]::file-selector-button:hover{
+    transition: 0.35s;
+    background-color: rgb(228, 74, 46);
+}
+
+/*list file box*/
 .wrapper2 .img div div{
     border: solid 1px rgb(177,206,1);
     border-radius: 10px;
+}
+
+@media only screen and (max-width: 450px){
+    /*q1*/
+    .wrapper .date ul .q1{
+        flex-direction: column;
+    }
+    /*q2*/
+    .wrapper .date ul .q2{
+        flex-direction: column;
+    }
 }

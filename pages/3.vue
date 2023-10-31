@@ -143,6 +143,7 @@ const onMenuChangeFile = (event: Event) =>{
 
   //filename show
   let p = document.createElement("p")
+  p.style.color = "rgb(102,102,102)"
   p.style.margin = "5px"
   p.style.fontSize = "16px"
   p.innerHTML = _file.name
@@ -153,9 +154,10 @@ const onMenuChangeFile = (event: Event) =>{
     counterMenu -= 1
     selectImageMenu.splice(Number((divFile.id).replace('Menu','')),1)
     console.log(selectImageMenu.length)})
+  btnDel.style.cursor = "pointer"
   btnDel.style.backgroundColor = "tomato"
   btnDel.style.color = "white"
-  btnDel.style.borderRadius = "10px"
+  btnDel.style.borderRadius = "5px"
   btnDel.innerHTML = "ลบ"
   btnDel.style.fontSize = "12px"
   btnDel.style.width = "2rem"
@@ -219,6 +221,7 @@ const onEnvChangeFile = (event: Event) =>{
 
   //filename show
   let p = document.createElement("p")
+  p.style.color = "rgb(102,102,102)"
   p.style.margin = "5px"
   p.style.fontSize = "16px"
   p.innerHTML = _file.name
@@ -230,8 +233,9 @@ const onEnvChangeFile = (event: Event) =>{
     selectImageEnv.splice(Number((divEnv.id).replace('Env','')),1)
     console.log(selectImageEnv.length)})
   btnDel.style.backgroundColor = "tomato"
+  btnDel.style.cursor = "pointer"
   btnDel.style.color = "white"
-  btnDel.style.borderRadius = "10px"
+  btnDel.style.borderRadius = "5px"
   btnDel.innerHTML = "ลบ"
   btnDel.style.fontSize = "12px"
   btnDel.style.width = "2rem"
