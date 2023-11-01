@@ -1,0 +1,126 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*wrapper*/
+.wrapper{
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+    font-family: Arial, sans-serif;
+}
+
+.wrapper .main{
+    box-shadow: 5px 5px rgb(232, 230, 230);
+    width: 60rem;
+    background-color: white;
+}
+
+.wrapper .main .header p{
+    background-color: black;
+    padding: 10px 10px 10px 10px;
+    color: white;
+}
+
+.wrapper .main img{
+    width: 100%;
+    overflow: visible;
+}
+
+.wrapper .main .name{
+    background-color: rgb(242,242,242);
+}
+.wrapper .main .name p{
+    background-color: rgb(242,242,242);
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+.wrapper .main .name .resName p{
+    font-weight: bold;
+    color: black;
+    font-size: 30px;
+    margin: 10px 0 10px 20px ;
+}
+p{
+    background-color: white;
+}
+
+/*type*/
+.wrapper .main .type {
+    margin-left: 1rem;
+    margin-bottom: 2rem;
+    background-color: white;
+}
+.wrapper .main .type div{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.wrapper .main .type div img{
+    margin-left: 10px;
+    background-color: white;
+    width: 25px;
+}
+
+/*location*/
+.wrapper .main .location{
+    margin-left: 1rem;
+    margin-bottom: 2rem;
+    background-color: white;
+}
+.wrapper .main .location div{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.wrapper .main .location div img{
+    margin-left: 10px;
+    background-color: white;
+    width: 25px;
+}
+
+/*time*/
+.wrapper .main .time {
+    margin-left: 1rem;
+    margin-bottom: 2rem;
+    background-color: white;
+}
+.wrapper .main .time div{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.wrapper .main .time div img{
+    margin-left: 10px;
+    background-color: white;
+    width: 25px;
+}
+
+
+/*footer*/
+.wrapper .main .footer{
+    background-color: white;
+    display: flex;
+    justify-content: right;
+    margin: 1rem;
+}
+.wrapper .main .footer button{
+    font-weight: bold;
+    background-color: rgb(148,166,132);
+    width: 6rem;
+    height: 3rem;
+    border-radius: 10px;
+    transition: 0.35s;
+    cursor: pointer;
+}
+.wrapper .main .footer button:hover{
+    transition: 0.35s;
+    background-color: rgb(121, 142, 102);
+    width: 6rem;
+    height: 3rem;
+}
