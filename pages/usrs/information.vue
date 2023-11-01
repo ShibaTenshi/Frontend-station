@@ -41,7 +41,7 @@
             </div>
 
             <div class="footer">
-                <button>Accpet</button>
+                <button v-on:click="goBack">Accpet</button>
             </div>
         </div>
     </div>
@@ -65,7 +65,9 @@ export default {
             time: null
         }
     },
-    methods:{}
+    methods:{
+        goBack(){navigateTo("/usrs")}
+    }
 }
 </script>
 
