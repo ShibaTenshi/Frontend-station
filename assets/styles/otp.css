@@ -1,14 +1,158 @@
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
-input {
+/*wrapper*/
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 4rem 2rem 1rem 2rem;
+}
+
+/*header*/
+.wrapper .header {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 1rem 0 10px 0;
+}
+
+/*email*/
+.wrapper .email{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 0 3rem 0;
+}
+.wrapper .email p{
+    font-size: 16px;
+    margin: 0 5px 0 0;
+    color: rgb(102,102,102);
+}
+.wrapper .email .show{
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 2px;
+    color: black;
+}
+
+/*input*/
+.wrapper .input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*refer*/
+.wrapper .input .refer{
+    font-weight: bold;
+    font-size: 25px;
+    margin: 1rem;
+}
+
+/*field*/
+.wrapper .input div input{
+    border: solid 1px rgb(202,202,202);
+    border-radius: 10px;
     padding: 10px;
-    border: solid 1px gray;
+    text-align: center;
 }
 
-button {
-    background-color: tomato;
+/*footer*/
+.footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/*button*/
+.footer button{
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    width: 12rem;
+    height: 2.5rem;
+    margin: 0 1rem 1rem 1rem;
+    font-size: 16px;
+    font-weight: bold;
+}
+/*button submit*/
+.footer .submit button{
+    background-color: rgb(148,166,132);
+    color: whitesmoke;
+    transition: 0.35s;
+}
+.footer .submit button:hover{
+    background-color: rgb(121,133,111);
+    transition: 0.35s;  
+}
+
+/*footer2*/
+.footer2{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+/*button*/
+.footer2 button{
+    border: none;
+    border-radius: 10px;
+    width: 6rem;
+    height: 3rem;
+    margin: 0 1rem 1rem 1rem;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+/*button back*/
+.footer2 .back button{
+    background-color: rgb(255, 168, 54);
+    transition: 0.35s;  
+}
+.footer2 .back button:hover{
+    background-color: rgb(223, 154, 64);
+    transition: 0.35s;  
+}
+
+@media only screen and (max-width: 500px){
+    .wrapper .header p{
+        font-size: 25px !important;
+    }
+    .wrapper .email{
+        flex-direction: column;
+    }
+    .wrapper .email p{
+        margin-top: 1rem !important;
+        font-size: 14px;
+        margin: 0 5px 0 0;
+    }
+    .wrapper .input .refer{
+        font-weight: bold;
+        font-size: 20px;
+        margin: 1rem;
+    }
+    .wrapper div input{
+        border: solid 1px rgb(202,202,202);
+        border-radius: 10px;
+        padding: 10px;
+    }
+    /*button*/
+    .footer button{
+        width: 10rem;
+        height: 2.5rem;
+        font-size: 16px;
+    }
+    .footer2 button{
+        border: none;
+        border-radius: 10px;
+        width: 5rem;
+        height: 2rem;
+        margin: 0 1rem 1rem 1rem;
+        font-size: 16px;
+    }
 }

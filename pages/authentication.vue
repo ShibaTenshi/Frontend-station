@@ -1,15 +1,34 @@
 <template>
     <Header :logo="true" :login="true"></Header>
-    <div>
-        <h2>OTP</h2>
+    <div class="wrapper">
+
+        <div class="header">
+            <p>OTP Verification</p>
+        </div>
+        <div class="email">
+            <p>Enter the OTP send to email</p>
+            <p class="show">{{ email }}</p>
+        </div>
 
         <div class="input">
-            <p>you refer code is {{ refer }}</p>
+            <p class="refer">Refer code is {{ refer }}</p>
             <div>
-                <p>you OTP</p>
+                <!-- <div class="you">
+                    <p>you OTP</p>
+                </div> -->
                 <input type="text" name="otpField" id="otpField">
             </div>
-            <button v-on:click="submit">Submit</button>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="submit">
+            <button v-on:click="submit">VERIFY & REQUEST</button>
+        </div>
+    </div>
+    <div class="footer2">
+        <div class="back">
+            <button >Back</button>
         </div>
     </div>
 </template>
@@ -20,7 +39,8 @@ import { useOtp } from '~/composables/useOtp'
 export default {
     data(){
         return{
-            refer: null
+            refer: null,
+            email: null
         }
     },
     methods: {
@@ -30,6 +50,12 @@ export default {
           navigateTo('/usrs')
         }
       },
+        setEmailSignup(){
+            const buff = localStorage.getItem("h1")
+            let form = JSON.parse(buff)
+            this.email = form[1]
+
+        },
         getOtpField(){ return document.querySelector("input[name=otpField]").value},
         setReferCode(){
             const referCode = localStorage.getItem("refer")
@@ -60,6 +86,7 @@ export default {
         }
     },
     mounted: function(){
+        this.$nextTick(this.setEmailSignup())
         this.$nextTick(this.setReferCode())
         this.$nextTick(this.islogin())
         this.$nextTick(this.checkHaveReferCode())
