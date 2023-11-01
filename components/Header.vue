@@ -6,29 +6,26 @@
         <div class="header">
             <nav>
                 <ul>
+
                     <div class="head">
                         <li class="logo">
                             <img class="imageLogo" src="../assets/RestaurantLogo.png" alt="" style="background: transparent;">
-                            <NuxtLink to="/usrs" v-if="logo" class="namelogo">
-                                <p style="background-color: transparent; color: white;">ShibaStation</p>
-                            </NuxtLink>
+                            <button v-if="logo" class="namelogo" v-on:click="goHome">ShibaStation</button>
                         </li>
                         <li class="home">
-                            <NuxtLink to="/usrs" v-if="home">
-                                <p style="background-color: transparent; color: white;">Home</p>
-                            </NuxtLink>
+                            <button v-if="home" class="menuhome" v-on:click="goHome">Home</button>
                         </li>
                     </div>
+
                     <div class="menu">
                         <li>
-                        <NuxtLink to="/login" v-if="login" class="menulogin">
-                            <p style="background-color: transparent; color: white;">Login</p>
-                        </NuxtLink>
+                            <button v-if="login" class="menulogin" v-on:click="goLogin">Login</button>
                         </li>
                         <li>
-                        <button v-if="logout" v-on:click="islogout" class="logoutButton" style="color: white;">Logout</button>
+                            <button v-if="logout" v-on:click="islogout" class="logoutButton" style="color: white;">Logout</button>
                         </li>
                     </div>
+
                 </ul>
             </nav>
         </div>
@@ -47,7 +44,8 @@
     home: Boolean
     
   })
-  
+  function goHome(){navigateTo("/usrs")}
+  function goLogin(){navigateTo("/login")}
   async function islogout(){
     const status = await useIsLogin()
     const cookie = useCookie('token')
@@ -69,99 +67,4 @@
     navigateTo('/login')
   }
 </script>
-
-
-<style>
-    *{
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: sans-serif;
-        font-size: 20px;
-    }
-    
-    .header nav ul{
-        height: 50px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 10px;
-        list-style: none;
-        background-color: rgb(148, 166, 132);
-    }
-
-    /*logo*/
-    .head {
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        padding-left: 10px;
-        background-color: transparent;
-    }
-    .head li{
-        margin-left: 45px;
-    }
-    .head .home{
-        background-color: transparent;
-    }
-    ul .head .logo{
-        display: flex;
-        align-items: center;
-        margin-left: 1px;
-    }
-    .head .logo .imageLogo{
-        width: 40px;
-        margin-bottom: 10px;
-        margin-right: 5px;
-    }
-    .head .logo {
-        background-color: transparent;
-       
-    }
-    .head .namelogo{
-        margin-left: 1px;
-        background-color: transparent;
-        text-decoration: none;
-        color: black;
-    }
-
-    /*menu*/
-    .header nav ul .menu{
-        display: flex;
-        justify-content: right;
-        background-color: transparent;
-    }
-    .menu li {
-        margin-right: 1px;
-        background-color: transparent;
-    }
-    .menulogin{
-        background-color: transparent; 
-        text-decoration: none;
-        color: black;
-        transition: 0.35s ease-in-out;
-    }
-    .menulogin:hover{
-        color: rgb(58, 73, 44);
-        transition: 0.35s ease-in;
-    }
-
-
-    /* logoutbutton */
-    .logoutButton{ 
-        background-color: transparent;
-        transition: 0.35s;
-        cursor: pointer;
-    }
-    .logoutButton:hover{
-        color: rgb(58, 73, 44);
-        transition: 0.35s;
-        cursor: pointer;
-    }
-
-    @media only screen and (max-width: 370px){
-        p{
-            font-size: 17px;
-        }
-    }
-</style>
+<style scoped src="@/assets/styles/navigation.css"></style>

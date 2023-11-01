@@ -20,6 +20,7 @@
     border-radius: 10px;
     width: 40rem;
     box-shadow: 5px 5px rgb(225, 220, 220);
+    background-color: white;
 }
 
 /*header*/
@@ -29,14 +30,17 @@
     align-items: center;
     justify-content: center;
     margin: 1rem 1rem 1rem 1rem;
+    background-color: transparent;
 }
 .wrapper .box .logo img {
     width: 120px;
     margin-right: 10px;
+    background-color: transparent;
 }
 .wrapper .box .logo .signup p{
     font-weight: normal;
     font-size: 3vh;
+    background-color: white;
 }
 @media only screen and (max-width: 360px){
     .wrapper .box .logo img {
@@ -51,6 +55,7 @@
 /*form*/
 li{
     list-style: none;
+    background-color: white;
 }
 .wrapper .box .form {
     margin: 1rem 1rem 1rem 1rem;
@@ -58,14 +63,18 @@ li{
 /*name*/
 .wrapper .box .form ul li p{
     margin-left: 10px;
+    background-color: white;
+    font-size: 20px;
 }
 /*input*/
 .wrapper .box .form ul li input  {
     margin: 10px 10px 1rem 10px;
     border: solid 1px rgb(202,202,202);
     border-radius: 10px;
+    font-size: 18px;
     height: 2rem;
     padding: 20px;
+    background-color: white;
 }
 
 /*button*/
@@ -73,6 +82,7 @@ li{
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: white;
 }
 .wrapper .box .form .enter button p{
     background-color: transparent;

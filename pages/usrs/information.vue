@@ -41,7 +41,7 @@
             </div>
 
             <div class="footer">
-                <button v-on:click="goBack">Accpet</button>
+                <button v-on:click="goBack">Back</button>
             </div>
         </div>
     </div>
