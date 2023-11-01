@@ -13,9 +13,6 @@
         <div class="input">
             <p class="refer">Refer code is {{ refer }}</p>
             <div>
-                <!-- <div class="you">
-                    <p>you OTP</p>
-                </div> -->
                 <input type="text" name="otpField" id="otpField">
             </div>
         </div>
