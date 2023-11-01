@@ -63,9 +63,17 @@
         </div>
       </div>
     </div>
+
+    <div class="footer">
+      <div class="back" >
+        <button v-on:click="goBack">Back</button>
+      </div>
+      
+      <div class="request" >
+        <button v-on:click="async () => {await onLogoSumbit();await OnMenuSubmit();await OnEnvSubmit(); if (haveImage()){requestSignup()}}">Request</button>
+      </div>
+    </div>
     <!-- async () => {await onLogoSumbit();await OnMenuSubmit();await OnEnvSubmit(); if (haveImage()){requestSignup()}} -->
-      <button v-on:click="async () => {await onLogoSumbit();await OnMenuSubmit();await OnEnvSubmit(); if (haveImage()){requestSignup()}}">Request</button>
-      <button v-on:click="goBack">Back</button>
 </template>
 
 <script setup lang="ts">
@@ -146,7 +154,7 @@ const onMenuChangeFile = (event: Event) =>{
   p.style.color = "rgb(102,102,102)"
   p.style.margin = "5px"
   p.style.fontSize = "16px"
-  p.innerHTML = _file.name
+  _file.name.length > 34 ? p.innerHTML=_file.name.slice(0,20) +"..."+ _file.name.slice(_file.name.length - 6,_file.name.length) : p.innerHTML=_file.name
 
   //button delete
   let btnDel = document.createElement("BUTTON")
@@ -224,7 +232,7 @@ const onEnvChangeFile = (event: Event) =>{
   p.style.color = "rgb(102,102,102)"
   p.style.margin = "5px"
   p.style.fontSize = "16px"
-  p.innerHTML = _file.name
+  _file.name.length > 34 ? p.innerHTML=_file.name.slice(0,20) +"..."+ _file.name.slice(_file.name.length - 6,_file.name.length) : p.innerHTML=_file.name
 
   //button delete
   let btnDel = document.createElement("BUTTON")

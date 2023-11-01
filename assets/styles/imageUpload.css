@@ -40,6 +40,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin-bottom: 1rem;
 }
 
 
@@ -80,9 +81,12 @@
     transition: 0.35s;
     cursor: pointer;
 }
+.wrapper2 .img div .imageLogo{
+    width: 15rem;
+}
 .wrapper2 .img div .imageMenu{
-    background-color: transparent;
-    color: transparent;
+    color: rgba(0, 0, 0, 0);
+    width: 10rem;
 }
 .wrapper2 .img div input[type="file"]::file-selector-button:hover{
     transition: 0.35s;
@@ -95,6 +99,43 @@
     border-radius: 10px;
 }
 
+/*footer*/
+.footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+/*button*/
+.footer button{
+    border: none;
+    border-radius: 10px;
+    width: 6rem;
+    height: 3rem;
+    margin: 1rem 1rem 1rem 1rem;
+    font-weight: bold;
+}
+/*button enter*/
+.footer .request button{
+    background-color: rgb(148,166,132);
+    transition: 0.35s;
+}
+.footer .request button:hover{
+    background-color: rgb(121,133,111);
+    transition: 0.35s;  
+}
+
+/*button back*/
+.footer .back button{
+    background-color: rgb(255, 168, 54);
+    transition: 0.35s;  
+}
+.footer .back button:hover{
+    background-color: rgb(223, 154, 64);
+    transition: 0.35s;  
+}
+
+
 @media only screen and (max-width: 450px){
     /*q1*/
     .wrapper .date ul .q1{
@@ -104,4 +145,43 @@
     .wrapper .date ul .q2{
         flex-direction: column;
     }
+    .wrapper2 .img{
+        width: 30rem;
+    }
+    .wrapper2 .img div p{
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+    }
+    .wrapper2 .img div input[type="file"]::file-selector-button{
+        display: flex;
+        justify-content: center;
+        border: none;
+        width: 5rem;
+        height: 1rem;
+        border-radius: 5px;
+        font-size: 10px;
+    }
+    .wrapper2 .img div .imageLogo::file-selector-button{
+        display: flex;
+        justify-content: center;
+        border: none;
+        width: 5rem;
+        height: 1rem;
+        border-radius: 5px;
+        font-size: 10px;
+
+    }
+    .wrapper2 .img div .imageLogo{
+        align-items: center;
+        width: 6rem;
+    }   
+}
+
+@media only screen and (max-width: 330px){
+    /*footer*/
+    .footer{
+        flex-direction: column;
+        margin-top: 10px !important;
+    }   
 }
