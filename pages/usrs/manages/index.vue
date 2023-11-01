@@ -1,39 +1,21 @@
 <template>
     <Header :logo="true" :logout="true" :home="true"/>
     <h1>Manages</h1>
-    <input type="file" class="imageLogo" id="imageLogo" @change="">
-    <button v-on:click="">Click</button>
+    <img :src="logoImage" alt="Logo Restaurant">
 </template>
 
 <script setup lang="ts">
-//     definePageMeta({
-//         middleware: 'auth'
-//     })
+import { fetchLogoImage } from "~/utils/userAPI";
 
-//     const file = ref<File | null>(null);
-//     const onChangeFile = (event: Event) =>{
-//     const [_file] = (event.target as HTMLInputElement).files as FileList;
+async function getLogo() {
+    const path = await fetchLogoImage("earth1234")
+    return "https://content-shibaqueue.doksakura.com" + path; 
+}
 
-//     file.value = _file
-//     };
-
-//     const onSumbit = async () =>{
-//     try{
-//     if(!file.value) throw "Don't have image file";
+let logoImage:string = await getLogo()
 
 
-//     const body = new FormData();
-//     body.append('file', file.value, file.value.name)
 
-//     // 10.147.17.253:5034/customer/image/profile/username
-//     await $fetch('http://10.147.17.253:5034/restaurant/image/logo/earth1234',{
-//       method: 'post',
-//       body
-//     })
 
-//     alert('Uploaded')
-//   }catch(error){
-//     console.log(error)
-//   }
-// }
+
 </script>
