@@ -42,16 +42,15 @@ export default {
     },
     methods: {
         islogin(){
-        const cookie = useCookie('token')
-        if (cookie.value != ""){
-          navigateTo('/usrs')
-        }
-      },
+            const cookie = useCookie('token')
+            if (cookie.value != ""){
+                navigateTo('/usrs')
+            }
+        },
         setEmailSignup(){
             const buff = localStorage.getItem("h1")
             let form = JSON.parse(buff)
             this.email = form[1]
-
         },
         getOtpField(){ return document.querySelector("input[name=otpField]").value},
         setReferCode(){
@@ -68,14 +67,11 @@ export default {
             console.log(this.getOtpField())
             const request = async () => {
                 const data = await useOtp(this.refer,this.getOtpField())
-                //alert(data.data)
-
                 if (data.data == ""){
                     localStorage.removeItem('h1')
                     alert("Request Signup Successful")
                     setTimeout(await navigateTo('/signupRecive'), 500)
-                }
-                else{
+                }else{
                     alert(data.data)
                 }
             }
