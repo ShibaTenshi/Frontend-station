@@ -2,152 +2,134 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/*wrapper*/
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*box*/
+.wrapper .box{
+    margin: 6rem 1rem 1rem 1rem;
+    border: solid 1px rgb(177, 206, 1);
+    border-radius: 8px;
+    box-shadow: 5px 5px rgb(237, 237, 237);
+    width: 40rem;
     background-color: white;
 }
 
-li{
-    list-style: none;
-}
-
-div .box{
-    margin: auto;
-    margin-top: 7rem;
-    border: 1.5px solid rgb(177, 206, 1);
+/*logo*/
+.wrapper .box .logo{
+    background-color: white;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    border-radius: 20px;
-    width: 40%;
-    box-shadow: 10px 10px rgb(226, 226, 226);
+    margin: 3rem 1rem 1rem 1rem;
 }
-
-
-.logo{
-    margin-top: 4rem;
-    font-size: 20px;
+.wrapper .box .logo img{
+    background-color: white;
+    width: 60px;
+}
+.wrapper .box .logo p{
+    background-color: white;
+    font-size: 30px;
     font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding-left: 10px;
 }
 
-@media screen and (max-width: 300px){
-    h4 {
-        font-size: 10px;
-    }
-    .box .logo .loginImage{
-        width: 40px;
-    }
-}
-.logo .loginImage{
-    width: 3rem;
-    margin-right: 15px;
-}
-.field ul .textField {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.field ul .textField li input {
+/*field*/
+.wrapper .field{
+    margin: 2rem 0 1rem 0;
     background-color: white;
-    border-radius: 3rem;
-    height: 1.8rem;
-    border: 1px solid black;
-    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*input*/
+.wrapper .field ul{
+    background-color: white;
+}
+.wrapper .field ul .textField li{
+    list-style: none;
+    background-color: white;
+}
+.wrapper .field ul .textField p{
+    background-color: white;
+}
+.wrapper .field ul .textField li input{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: solid 1px rgb(202,202,202);
+    background-color: white;
+    border-radius: 10px;
+    width: 16rem;
+    height: 40px;
     padding: 20px;
-
 }
-@media screen and (max-width: 920px){
 
-    .field ul .textField li input{
-        width: 180px;
+/*error*/
+.wrapper .field ul .error{
+    background-color: white;
+    margin-bottom: 20px;
+}
+
+/*btn*/
+.wrapper .field .btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+.wrapper .field .btn button{
+    cursor: pointer;
+    border: none;
+    background-color: rgb(148, 168, 132);
+    width: 5rem;
+    height: 2rem;
+    border-radius: 5px;
+    transition: 0.35s;
+    font-weight: bold;
+    font-size: 16px;
+}
+.wrapper .field .btn button:hover{
+    transition: 0.35s;
+    background-color: rgb(121,133,111);
+}
+
+/*footer*/
+.wrapper .field .footer{
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper .field .footer p{
+    margin: 0 1rem 0 1rem;
+    background-color: white;
+}
+
+@media only screen and (max-width: 560px){
+    .wrapper .field .footer{
+        flex-direction: column;
     }
 }
-@media screen and (max-width: 750px){
-    .field ul .textField {
-        display: block;
-        justify-content: center;
-        align-items: center;
-        margin-left: 10px;
-    }
-    .field ul .textField li input{
 
-        font-size: 20px;
-        padding: 15px;
+@media only screen and (max-width: 400px){
+    .wrapper .field ul .textField li input{
+        width: 10rem;
+        height: 40px;
+        padding: 16px;
     }
-}
-/* @media screen and (max-width: 560px){
-    .field ul {
-        align-items: center;
-    }
-    .field ul .textField p{
+    .wrapper .field .footer p{
+        margin: 0 1rem 1rem 1rem;
+        background-color: white;
         font-size: 14px;
     }
-    .field p {
-        font-size: 10px;
-    }
-    .field ul .textField li input{
-        width: 150px;
-    }
-} */
-@media screen and (max-width: 560px){
-    .logo .loginImage{
-        width: 2rem;
-        margin-right: 15px;
-    }
-    h4{
-        font-size: 10px;
-    }
-    .field{
-        margin: auto;
-    }
-    .field p {
-        font-size: 8px;
-    }
-    .field ul .textField{
-        margin-left: 9px;
-    }
-    .field ul .textField p{
-        margin-top: 10px;
-        margin-left: 15px;
-    }
-    .field ul .textField li input{
-        width: 80px;
-        height: 1.2rem;
-        font-size: 10px;
-        padding: 10px;
-    }
-    .box .field .AcceptBt{
-        padding: 5px 15px;
-        font-size: 10px;
-    }
-}
-
-.box .field ul .error {
-    text-align: center;
-}
-
-
-.field .AcceptBt{
-    display: flex;
-    align-items: center;
-    margin: auto;
-
-    font-weight: bold;
-    font-size: 15px;
-    background-color: rgb(148, 166, 132);
-    transition: 0.35s;
-    padding: 10px 30px;
-    border-radius: 10px;
-}
-.AcceptBt:hover {
-    background-color: rgb(121, 142, 102);
-    transition: 0.35s;
-    padding: 10px 33px;
-}
-
-
-.signupLink{
-    text-align: center;
-    font-size: 14px;
-    margin: 20px;
 }

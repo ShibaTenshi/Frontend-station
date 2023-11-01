@@ -1,29 +1,36 @@
 <template>
     <Header :logo="true"/>
-    <div class="box">
-        <div class="logo">
-            <img src="../assets/login.png" alt="" srcset="" class="loginImage">
-            <h4>Log-In</h4>
-        </div>
-        <div class="field">
-            <ul>
-                <div class="textField">
-                    <p>Username</p>
-                    <li><input type="text" name="usernameField" id="usernameField"></li>
+
+    <div class="wrapper">
+        <div class="box">
+            <div class="logo">
+                <img src="../assets/login.png" alt="" srcset="" class="loginImage">
+                <p>Log-In</p>
+            </div>
+            <div class="field">
+                <ul>
+                    <div class="textField">
+                        <p>Username</p>
+                        <li><input type="text" name="usernameField" id="usernameField"></li>
+                    </div>
+                    <p class="error" id="p1">{{ usernameError }}</p>
+                    <div class="textField">
+                        <p>Password</p>
+                        <li><input type="password" name="passwdField" id="passwdField" @keydown.enter="loginRequest"></li>
+                    </div>
+                    <p class="error" id="p2">{{ passwordError }}</p>
+                </ul>
+                <div class="btn">
+                    <button v-on:click="loginRequest" class="AcceptBt">Accept</button>
                 </div>
-                <p class="error" id="p1">{{ usernameError }}</p>
-                <div class="textField">
-                    <p>Password</p>
-                    <li><input type="password" name="passwdField" id="passwdField" @keydown.enter="loginRequest"></li>
+                <div class="footer">
+                    <p class="signupLink">If you don’t have your account, Please click</p>
+                    <NuxtLink to="/" style="background-color: white;">Sign-Up</NuxtLink>
                 </div>
-                <p class="error" id="p2">{{ passwordError }}</p>
-            </ul>
-            <br>
-            <button v-on:click="loginRequest" class="AcceptBt">Accept</button>
-            <br><br>
-            <p class="signupLink">If you don’t have your account, Please click <NuxtLink to="/">Sign-Up</NuxtLink></p>
+            </div>
         </div>
     </div>
+
 </template>
 
 <script>
