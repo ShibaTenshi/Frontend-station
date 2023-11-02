@@ -75,6 +75,7 @@ li{
     height: 2rem;
     padding: 20px;
     background-color: white;
+    transition: 0.3s;
 }
 
 /*button*/
@@ -88,20 +89,22 @@ li{
     background-color: transparent;
 }
 .wrapper .box .form .enter button{
+    cursor: pointer;
     margin: 1rem 1rem 1rem 1rem;
     border: none;
     border-radius: 10px;
     background-color: rgb(148,166,132);
     width: 5rem;
-    height: 2rem;
+    height: 3rem;
     transition: 0.35s;
     font-weight: bold;
+    font-size: 16px;
 }
 .wrapper .box .form .enter button:hover{
     transition: 0.35s;
     background-color: rgb(121,133,111);
     width: 5rem;
-    height: 2rem ;
+    height: 3rem ;
 }
 
 @media only screen and (max-width: 340px){

@@ -62,10 +62,16 @@
                 <div>
                     <p>Original Password</p>
                     <input type="text">
+                    <div class="error">
+                        <p>Incorrect Password</p>
+                    </div>
                 </div>
                 <div>
                     <p>New Password</p>
                     <input type="text">
+                    <div class="error">
+                        <p>Incorrect Password</p>
+                    </div>
                 </div>
                 <div>
                     <p>Confirm Password</p>
@@ -75,7 +81,7 @@
 
             <div class="footer">
                 <div class="back">
-                    <button>Back</button>
+                    <button v-on:click="goBack">Back</button>
                 </div>
                 <div class="accept">
                     <button>Accept</button>
@@ -88,14 +94,15 @@
 </template>
 
 <script setup lang="ts">
-import { fetchLogoImage } from "~/utils/userAPI";
-import { useUserStore } from "@/stores/userStore";
+import { fetchLogoImage } from "~/utils/userAPI"
+import { useUserStore } from "@/stores/userStore"
 
 const store = useUserStore()
 
+const goBack = () => navigateTo("/usrs")
 async function getLogo() {
     const path = await fetchLogoImage("earth1234")
-    return "https://content-shibaqueue.doksakura.com" + path; 
+    return "https://content-shibaqueue.doksakura.com" + path
 }
 
 
