@@ -3,6 +3,6 @@ export default defineNuxtConfig({
   typescript: {
     strict: true
   },
-  modules: [],
+  modules: ['@pinia/nuxt'],
   devtools: { enabled: true }
 })
