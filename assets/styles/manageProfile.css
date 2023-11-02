@@ -107,6 +107,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 2rem;
 }
 
 /*field*/
@@ -127,6 +128,23 @@
 .wrapper .main .data .show .field div div p{
     color: rgb(102,102,102);
     font-size: 20px;
+}
+
+@media only screen and (max-width: 840px){
+    /*show*/
+    .wrapper .main .data .show .field{
+        width: 30rem;
+    }
+    .wrapper .main .data .show .field div .name{
+        font-size: 20px;
+        margin: 20px 25px 20px 5px;
+        font-weight: bold;
+    }
+    /*text show*/
+    .wrapper .main .data .show .field div div p{
+        color: rgb(102,102,102);
+        font-size: 20px;
+    }
 }
 
 
@@ -150,6 +168,26 @@
     }
 }
 
+@media only screen and (max-width: 550px){
+    .wrapper .main .data .show{
+        width: 15rem;
+    } 
+    /*show*/
+    .wrapper .main .data .show .field{
+        width: 25rem;
+    }
+    .wrapper .main .data .show .field div .name{
+        font-size: 12px;
+        margin: 20px 25px 20px 5px;
+        font-weight: bold;
+    }
+    /*text show*/
+    .wrapper .main .data .show .field div div p{
+        color: rgb(102,102,102);
+        font-size: 12px;
+    }
+}
+
 @media only screen and (max-width: 450px){
     .wrapper .main .data .show{
         width: 15rem;
@@ -170,5 +208,154 @@
     }
 }
 
+@media only screen and (max-width: 300px){
+    .wrapper .main .data .show{
+        width: 10rem;
+    } 
+    /*show*/
+    .wrapper .main .data .show .field{
+        width: 10rem;
+    }
+    .wrapper .main .data .show .field div .name{
+        font-size: 10px;
+        margin: 20px 3px 20px 0;
+        font-weight: bold;
+    }
+    /*text show*/
+    .wrapper .main .data .show .field div div p{
+        color: rgb(102,102,102);
+        font-size: 10px;
+    }
+}
+
 
 /*pass*/
+.wrapper .pass{
+    width: 80vw;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(242,242,242);
+    box-shadow: 5px 5px rgb(232, 230, 230);
+}
+.wrapper .pass .header{
+    background-color: transparent;
+}
+.wrapper .pass .header div{
+    background-color: transparent;
+}
+.wrapper .pass .header div p{
+    margin: 2rem;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: transparent;
+}
+
+/*filed*/
+.wrapper .pass .field {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper .pass .field div {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0 1rem 0;
+}
+/*input*/
+.wrapper .pass .field div input{
+    border: solid 1px rgb(202,202,202);
+    border-radius: 8px;
+    width: 15rem;
+    height: 35px;
+    background-color: white;
+    padding: 20px;
+    font-size: 18px;
+}
+.wrapper .pass .field div p{
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/*footer*/
+.wrapper .pass .footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+}
+.wrapper .pass .footer button{
+    margin: 1rem 2rem 1rem 2rem;
+    border: none;
+    border-radius: 9px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+/*back*/
+.wrapper .pass .footer div{
+    background-color: rgb(242, 242, 242); 
+}
+.wrapper .pass .footer .back button{
+    background-color: rgb(255, 168, 54);
+    transition: 0.35s;
+    width: 5rem;
+    height: 3rem;
+    transition: 0.35s; 
+}
+
+.wrapper .pass .footer .back button:hover{
+    background-color: rgb(223, 154, 64);
+    transition: 0.35s;
+}
+
+/*accept*/
+.wrapper .pass .footer .accept button{
+    background-color: rgb(148,166,132);
+    transition: 0.35s;
+    width: 5rem;
+    height: 3rem;
+    transition: 0.35s;
+}
+.wrapper .pass .footer .accept button:hover{
+    background-color: rgb(121,133,111);
+    transition: 0.35s;
+}
+
+@media only screen and (max-width: 340px){
+    .wrapper .pass .footer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;   
+    }
+
+    .wrapper .pass .header div p{
+        margin: 2rem;
+        font-size: 16px;
+        font-weight: bold;
+        background-color: transparent;
+    }
+    /*input*/
+.wrapper .pass .field div input{
+    border: solid 1px rgb(202,202,202);
+    border-radius: 8px;
+    width: 10rem;
+    height: 30px;
+    background-color: white;
+    padding: 10px;
+    font-size: 15px;
+    }
+    .wrapper .pass .field div p{
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+}

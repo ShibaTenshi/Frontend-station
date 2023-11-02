@@ -54,6 +54,33 @@
         </div>
 
         <div class="pass">
+            <div class="header">
+                <div><p>Change Password</p></div>
+            </div>
+
+            <div class="field">
+                <div>
+                    <p>Original Password</p>
+                    <input type="text">
+                </div>
+                <div>
+                    <p>New Password</p>
+                    <input type="text">
+                </div>
+                <div>
+                    <p>Confirm Password</p>
+                    <input type="text">
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="back">
+                    <button>Back</button>
+                </div>
+                <div class="accept">
+                    <button>Accept</button>
+                </div>
+            </div>
 
         </div>
     </div>
