@@ -99,6 +99,10 @@ import { useUserStore } from "@/stores/userStore"
 
 const store = useUserStore()
 
+definePageMeta({
+        middleware: 'auth'
+    })
+
 const goBack = () => navigateTo("/usrs")
 async function getLogo() {
     const path = await fetchLogoImage("earth1234")

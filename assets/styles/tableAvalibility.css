@@ -1,0 +1,186 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/*wrapper*/
+.wrapper {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*main*/
+.wrapper .main{
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    border-radius: 8px;
+    box-shadow: 5px 5px rgb(232, 230, 230);
+}
+
+/*header*/
+.wrapper .main .header{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    background-color: black;
+    padding: 10px;
+}
+.wrapper .main .header p{
+    color: white;
+    background-color: black;
+}
+
+/*background*/
+.wrapper .main .back .background{
+    width: 100%;
+    filter: blur(1.8px);
+}
+
+
+/*data*/
+.wrapper .data{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    background-color: rgb(242,242,242);
+}
+.wrapper .data .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+.wrapper .data .header div{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    background-color: transparent;
+}
+
+/*name*/
+.wrapper .data .header p{
+    text-align: left;
+    color: black;
+    background-color: rgb(242,242,242);
+    font-size: 30px;
+    font-weight: bold;
+    margin: 5px 0 5px 10px;
+}
+/*info*/
+.wrapper .data .header .info{
+    text-align: left;
+    color: rgb(102,102,102);
+    background-color: rgb(242,242,242);
+    font-size: 20px;
+    font-weight: normal;
+}
+
+
+
+/*footer*/
+.wrapper .main .footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(242,242,242);
+}
+
+/*button*/
+.wrapper .main .footer button{
+    margin: 1rem 2rem 1rem 2rem;
+    border: none;
+    border-radius: 9px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/*back*/
+.wrapper .main .footer div{
+    background-color: transparent;
+}
+.wrapper .main .footer .back button{
+    background-color: rgb(255, 168, 54);
+    transition: 0.35s;
+    width: 5rem;
+    height: 3rem;
+    transition: 0.35s; 
+}
+.wrapper .main .footer .back button:hover{
+    background-color: rgb(223, 154, 64);
+    transition: 0.35s;
+}
+
+/*edit*/
+.wrapper .main .footer .edit button{
+    background-color: rgb(148,166,132);
+    transition: 0.35s;
+    width: 5rem;
+    height: 3rem;
+    transition: 0.35s; 
+}
+.wrapper .main .footer .edit button:hover{
+    background-color: rgb(121,133,111);
+    transition: 0.35s;
+}
+
+
+@media only screen and (max-width: 800px){
+    /*name*/
+    .wrapper .data .header p{
+        font-size: 20px;
+        margin: 5px 0 5px 10px;
+    }
+    /*info*/
+    .wrapper .data .header .info{
+        font-size: 13px;
+        font-weight: normal;
+    }
+}
+@media only screen and (max-width: 420px){
+    /*name*/
+    .wrapper .data .header p{
+        font-size: 15px;
+        margin: 5px 0 5px 10px;
+    }
+    /*info*/
+    .wrapper .data .header .info{
+        font-size: 11px;
+        font-weight: normal;
+    }
+
+    .wrapper .main .footer button{
+        margin: 1rem 1rem 1rem 1rem;
+        border: none;
+        border-radius: 9px;
+    }
+    /*back*/
+    .wrapper .main .footer .back button{
+        font-size: 12px;
+        width: 4rem;
+        height: 30px;
+    }
+    /*edit*/
+    .wrapper .main .footer .edit button{
+        font-size: 12px;
+        width: 4rem;
+        height: 30px;
+    }
+}
+@media only screen and (max-width: 300px){
+    /*name*/
+    .wrapper .data .header p{
+        font-size: 12px;
+        margin: 5px 0 5px 10px;
+    }
+    /*info*/
+    .wrapper .data .header .info{
+        font-size: 10px;
+    }
+}
