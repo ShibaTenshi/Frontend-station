@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/*wrapper*/
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*main*/
+.wrapper .main{
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    border-radius: 8px;
+    box-shadow: 5px 5px rgb(232, 230, 230);
+}
+
+/*header*/
+.wrapper .main .header{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    background-color: black;
+    padding: 10px;
+}
+.wrapper .main .header p{
+    color: white;
+    background-color: black;
+}
+
+/*background*/
+.wrapper .main .back .background{
+    width: 100%;
+    filter: blur(1.8px);
+}
+
+
+/*data*/
+.wrapper .main .data{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(242,242,242);
+
+}
+.wrapper .main .data .image{
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*image profile circle*/
+.wrapper .main .data .circular{
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border: solid 3px black;
+    border-radius: 50%;
+    margin: 1rem;
+    background-color: white;
+
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    transition: 0.35s;
+}
+/*image picture*/
+.wrapper .main .data .image img{
+    width: 100%;
+    background-color: transparent;
+}
+@media only screen and (max-width: 660px){
+    .wrapper .main .data .circular{
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+        border: solid 3px black;
+        border-radius: 50%;
+        margin: 1rem;
+    }
+}
+
+
+.wrapper .main .data .show{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40rem;
+    background-color: transparent;
+}
+
+/*show*/
+.wrapper .main .data .show .field{
+    width: 40rem;
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*field*/
+.wrapper .main .data .show .field div{
+    display: flex;
+    margin: 1rem 0 1rem 1rem;
+    align-items: center;
+    width: 90%;
+}
+
+/*text*/
+.wrapper .main .data .show .field div .name{
+    font-size: 20px;
+    margin: 20px 100px 20px 50px;
+    font-weight: bold;
+}
+/*text show*/
+.wrapper .main .data .show .field div div p{
+    color: rgb(102,102,102);
+    font-size: 20px;
+}
+
+
+@media only screen and (max-width: 660px){
+    .wrapper .main .data .show{
+        width: 25rem;
+    } 
+    /*show*/
+    .wrapper .main .data .show .field{
+        width: 25rem;
+    }
+    .wrapper .main .data .show .field div .name{
+        font-size: 15px;
+        margin: 20px 100px 20px 50px;
+        font-weight: bold;
+    }
+    /*text show*/
+    .wrapper .main .data .show .field div div p{
+        color: rgb(102,102,102);
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 450px){
+    .wrapper .main .data .show{
+        width: 15rem;
+    } 
+    /*show*/
+    .wrapper .main .data .show .field{
+        width: 15rem;
+    }
+    .wrapper .main .data .show .field div .name{
+        font-size: 12px;
+        margin: 20px 25px 20px 5px;
+        font-weight: bold;
+    }
+    /*text show*/
+    .wrapper .main .data .show .field div div p{
+        color: rgb(102,102,102);
+        font-size: 12px;
+    }
+}
+
+
+/*pass*/
