@@ -35,7 +35,7 @@
                     <button v-on:click="goBack">Back</button>
                 </div>
                 <div class="edit">
-                    <button>Edit</button>
+                    <button v-on:click="goAssign">Edit</button>
                 </div>
             </div>
         </div>
@@ -49,6 +49,7 @@
     })
 
     const goBack = () => navigateTo("/usrs")
+    const goAssign = () => navigateTo("/usrs/manages/editTable")
 
     let restaurantName= "Restaurant Name"
     let information= "Information"
