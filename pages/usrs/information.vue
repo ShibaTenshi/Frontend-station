@@ -37,7 +37,7 @@
                     <p>Time</p>
                     <img src="@/assets/pngwing2.png" alt="">
                 </div>
-                <p>time</p>
+                <p>{{ time }}</p>
             </div>
 
             <div class="footer">
@@ -57,16 +57,28 @@
 
 
 <script lang="ts">
+import { timeFormat } from "~/utils/timeFormat";
 export default {
     data(){
         return{
             restaurantName: null,
             location: null,
-            time: null
+            time: ""
         }
     },
     methods:{
-        goBack(){navigateTo("/usrs")}
+        goBack(){navigateTo("/usrs")},
+
+        setTime(openDate:string, openTime:string, closeTime:string){
+            return timeFormat(openDate, openTime ,closeTime)
+        },
+
+        setInformation(){
+            this.time = this.setTime("1101011","13:59","20:00")
+        }
+    },
+    mounted: function () {
+        this.$nextTick(this.setInformation)
     }
 }
 </script>
