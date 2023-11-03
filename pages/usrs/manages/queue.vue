@@ -70,6 +70,7 @@
     definePageMeta({
         middleware: 'auth'
     })
+    const goBack = () => navigateTo("/usrs")
     let restaurantName = "Restaurant Name"
     let information = "Restaurant information"
     let date = "01/01/2023 - 02/02/2023"

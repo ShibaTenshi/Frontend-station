@@ -116,6 +116,10 @@
 }
 
 /*button*/
+.wrapper .main .footer{
+    display: flex;
+    justify-content: right;
+}
 .wrapper .main .footer button{
     margin: 1rem 2rem 1rem 2rem;
     border: none;
@@ -130,14 +134,14 @@
     background-color: transparent;
 }
 .wrapper .main .footer .back button{
-    background-color: rgb(255, 168, 54);
+    background-color: rgb(148,166,132);
     transition: 0.35s;
     width: 5rem;
     height: 3rem;
     transition: 0.35s; 
 }
 .wrapper .main .footer .back button:hover{
-    background-color: rgb(223, 154, 64);
+    background-color: rgb(121,133,111);
     transition: 0.35s;
 }
 
