@@ -56,11 +56,30 @@
 }
 
 /*field*/
+.wrapper .input div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .wrapper .input div input{
     border: solid 1px rgb(202,202,202);
     border-radius: 10px;
     padding: 10px;
+    font-size: 18px;
     text-align: center;
+}
+/*resend*/
+.wrapper .input div p{
+    margin: 1rem 0 1rem 0;
+    color: rgb(102,102,102);
+    background-color: transparent;
+}
+.wrapper .input div p button{
+    background-color: transparent;
+    color: tomato;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 /*footer*/
@@ -95,8 +114,8 @@
 /*footer2*/
 .footer2{
     display: flex;
-    flex-direction: column;
-    justify-content: left;
+    flex-direction: row;
+    justify-content: center;
 }
 /*button*/
 .footer2 button{
@@ -104,7 +123,7 @@
     border-radius: 10px;
     width: 6rem;
     height: 3rem;
-    margin: 0 1rem 1rem 1rem;
+    margin: 1rem 0 1rem 0;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;

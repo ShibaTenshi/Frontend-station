@@ -13,6 +13,7 @@
 
 /*box*/
 .wrapper .detailBox{
+    background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -26,18 +27,22 @@
 
 /*logo*/
 .wrapper .detailBox .logo{
+    background-color: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 1rem 0 1rem 0;
+    background-color: white;
 }
 .wrapper .detailBox .logo .signup p{
     font-weight: normal;
     font-size: 3vh;
+    background-color: white;
 }
 .wrapper .detailBox .logo img{
     width: 120px;
     margin-right: 10px;
+    background-color: transparent;
 }
 
 @media only screen and (max-width: 360px){
@@ -55,18 +60,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: white;
 }
 .wrapper .detailBox .form ul li{
     list-style: none;
+    background-color: white;
 }
 .wrapper .detailBox .form ul .form_1{
     display: flex;
     flex-direction: row;
 }
+.wrapper .detailBox .form ul .form_1 div{
+    background-color: white;
+}
+
 /*name*/
 .wrapper .detailBox .form ul li p{
     font-size: 19px;
     margin-left: 10px;
+    background-color: white;
 }
 /*input*/
 .wrapper .detailBox .form ul li input{
@@ -75,6 +87,8 @@
     border-radius: 10px;
     height: 2rem;
     padding: 20px;
+    background-color: white;
+    font-size: 18px;
 }
 .wrapper .detailBox .form ul li select{
     margin: 10px 10px 1rem 10px;
@@ -85,13 +99,18 @@
     font-size: 18px;
     color: rgb(102,102,102);
     padding-left: 10px;
+    background-color: white;
 }
 
 
 /*footer*/
+.wrapper .detailBox{
+    background-color: white;
+}
 .wrapper .detailBox .footer{
     display: flex;
     flex-direction: row;
+    background-color: white;
 }
 /*button*/
 .wrapper .detailBox .footer button{
@@ -103,6 +122,9 @@
     font-weight: bold;
 }
 /*button enter*/
+.wrapper .detailBox .footer .enter{
+    background-color: white;
+}
 .wrapper .detailBox .footer .enter button{
     background-color: rgb(148,166,132);
     transition: 0.35s;
@@ -113,6 +135,9 @@
 }
 
 /*button back*/
+.wrapper .detailBox .footer .back{
+    background-color: white;
+}
 .wrapper .detailBox .footer .back button{
     background-color: rgb(255, 168, 54);
     transition: 0.35s;  

@@ -61,21 +61,21 @@
             <div class="field">
                 <div>
                     <p>Original Password</p>
-                    <input type="text" id="oldPassword">
+                    <input type="password" id="oldPassword">
                     <div class="error">
                         <p id="error_old">Incorrect Password</p>
                     </div>
                 </div>
                 <div>
                     <p>New Password</p>
-                    <input type="text" id="newPassword">
+                    <input type="password" id="newPassword">
                     <div class="error">
                         <p id="error_new">Incorrect Password</p>
                     </div>
                 </div>
                 <div>
                     <p>Confirm Password</p>
-                    <input type="text" id="confirmNewPassword" @keydown.enter="requestChangePassword">
+                    <input type="password" id="confirmNewPassword" @keydown.enter="requestChangePassword">
                 </div>
             </div>
 

@@ -275,10 +275,10 @@
     border: solid 1px rgb(202,202,202);
     border-radius: 8px;
     width: 15rem;
-    height: 35px;
+    height: 49px;
     background-color: white;
     padding: 20px;
-    font-size: 18px;
+    font-size: 22px;
     transition: 0.3s;
 }
 .wrapper .pass .field div p{

@@ -13,7 +13,8 @@
         <div class="input">
             <p class="refer">Refer code is {{ refer }}</p>
             <div>
-                <input type="text" name="otpField" id="otpField">
+                <input type="text" name="otpField" id="otpField" @keydown.enter="submit">
+                <p>if you didn't receive a code <button v-on:click="goback">Resend</button></p>
             </div>
         </div>
     </div>
@@ -25,7 +26,7 @@
     </div>
     <div class="footer2">
         <div class="back">
-            <button >Back</button>
+            <button v-on:click="goback">Back</button>
         </div>
     </div>
 </template>
@@ -41,6 +42,7 @@ export default {
         }
     },
     methods: {
+        goback(){navigateTo("/3")},
         islogin(){
             const cookie = useCookie('token')
             if (cookie.value != ""){
