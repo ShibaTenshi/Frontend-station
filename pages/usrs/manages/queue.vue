@@ -66,27 +66,39 @@
 
 </template>
 
-<script setup>
+<script setup lang="ts">
     definePageMeta({
         middleware: 'auth'
     })
     const goBack = () => navigateTo("/usrs")
-    let restaurantName = "Restaurant Name"
-    let information = "Restaurant information"
     let date = "01/01/2023 - 02/02/2023"
 
 </script>
 
 
 
-<script>
+<script lang="ts">
+import { fetchNameProfile } from "~/utils/userAPI"
+import { fetchDescriptionProfile } from "~/utils/userAPI"
 export default {
     data(){
         return{
-
+            restaurantName: "Restaurant Name",
+            information:"Information"
         }
     },
-    methods:{}
+    methods:{
+        async fetchData(){
+            const name:any = await fetchNameProfile(useCookie('token').value)
+            this.restaurantName = name;
+
+            const discription:any = await fetchDescriptionProfile(useCookie('token').value)
+            this.information = discription;
+        },
+    },
+    mounted: function() {
+        this.$nextTick(this.fetchData)
+    }
 }
 </script>
 <style scoped src="@/assets/styles/queue.css"></style>

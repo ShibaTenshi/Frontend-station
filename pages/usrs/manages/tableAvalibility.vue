@@ -50,23 +50,30 @@
 
     const goBack = () => navigateTo("/usrs")
     const goAssign = () => navigateTo("/usrs/manages/editTable")
-
-    let restaurantName= "Restaurant Name"
-    let information= "Information"
-
 </script>
 
 
 
 <script lang="ts">
+import { fetchNameProfile } from "~/utils/userAPI"
+import { fetchDescriptionProfile } from "~/utils/userAPI"
 import lamp from '@/assets/lamp.png'
+
 export default {
     data(){
         return{
-
+            restaurantName: "Restaurant Name",
+            information:"Information"
         }
     },
     methods:{
+        async fetchData(){
+            const name:any = await fetchNameProfile(useCookie('token').value)
+            this.restaurantName = name;
+
+            const discription:any = await fetchDescriptionProfile(useCookie('token').value)
+            this.information = discription;
+        },
         createCard() {
             const table = document.getElementById("table")
 
@@ -125,6 +132,7 @@ export default {
     },
     mounted: function() {
         this.$nextTick(this.generateTable)
+        this.$nextTick(this.fetchData)
     }
 }
 </script>

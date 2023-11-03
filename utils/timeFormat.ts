@@ -25,6 +25,5 @@ export const timeFormat = (openDate:string, openTime:string, closeTime:string):s
 
     dayFormat += format(openTime) + " - " + format(closeTime)
 
-    console.log(dayFormat)
     return dayFormat
 }

@@ -11,9 +11,9 @@
             </div>
             <div class="name">
                 <div class="resName">
-                    <p>Restarurant Name</p>
+                    <p>{{ restaurantName }}</p>
                 </div>
-                <p>Restarurant Description</p>
+                <p>{{ restaurantDiscription }}</p>
             </div>
 
             <div class="type">
@@ -49,6 +49,7 @@
 </template>
 
 <script setup lang="ts">
+
     definePageMeta({
         middleware: 'auth'
     })
@@ -57,17 +58,28 @@
 
 
 <script lang="ts">
+import { fetchNameProfile } from "~/utils/userAPI"
+import { fetchDescriptionProfile } from "~/utils/userAPI"
 import { timeFormat } from "~/utils/timeFormat";
+
 export default {
     data(){
         return{
             restaurantName: null,
+            restaurantDiscription: null,
             location: null,
             time: ""
         }
     },
     methods:{
         goBack(){navigateTo("/usrs")},
+        async fetchData(){
+            const name:any = await fetchNameProfile(useCookie('token').value)
+            this.restaurantName = name;
+
+            const discription:any = await fetchDescriptionProfile(useCookie('token').value)
+            this.restaurantDiscription = discription;
+        },
 
         setTime(openDate:string, openTime:string, closeTime:string){
             return timeFormat(openDate, openTime ,closeTime)
@@ -79,6 +91,7 @@ export default {
     },
     mounted: function () {
         this.$nextTick(this.setInformation)
+        this.$nextTick(this.fetchData)
     }
 }
 </script>

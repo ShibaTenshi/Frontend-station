@@ -51,3 +51,37 @@ export async function changePassword(tokenId:unknown,oldPassword:string,newPassw
 
     return data;
 }
+
+export async function fetchNameProfile(tokenId:unknown){
+    const axios = useNuxtApp().$axios;
+    const api = 'http://localhost:5041/name';
+
+    let data
+
+    await axios.get(api, {
+        params: {
+            tokenId: tokenId
+        }
+    }).then((response) => {data = response.data}).catch((error) =>{
+        data = error.response
+    })
+
+    return data;
+}
+
+export async function fetchDescriptionProfile(tokenId:unknown){
+    const axios = useNuxtApp().$axios;
+    const api = 'http://localhost:5041/description';
+
+    let data
+
+    await axios.get(api, {
+        params: {
+            tokenId: tokenId
+        }
+    }).then((response) => {data = response.data}).catch((error) =>{
+        data = error.response
+    })
+
+    return data;
+}
