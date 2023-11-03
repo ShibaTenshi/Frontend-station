@@ -61,21 +61,21 @@
             <div class="field">
                 <div>
                     <p>Original Password</p>
-                    <input type="text">
+                    <input type="text" id="oldPassword">
                     <div class="error">
-                        <p>Incorrect Password</p>
+                        <p id="error_old">Incorrect Password</p>
                     </div>
                 </div>
                 <div>
                     <p>New Password</p>
-                    <input type="text">
+                    <input type="text" id="newPassword">
                     <div class="error">
-                        <p>Incorrect Password</p>
+                        <p id="error_new">Incorrect Password</p>
                     </div>
                 </div>
                 <div>
                     <p>Confirm Password</p>
-                    <input type="text">
+                    <input type="text" id="confirmNewPassword" @keydown.enter="requestChangePassword">
                 </div>
             </div>
 
@@ -84,7 +84,7 @@
                     <button v-on:click="goBack">Back</button>
                 </div>
                 <div class="accept">
-                    <button>Accept</button>
+                    <button v-on:click="requestChangePassword">Accept</button>
                 </div>
             </div>
 
@@ -95,9 +95,12 @@
 
 <script setup lang="ts">
 import { fetchLogoImage } from "~/utils/userAPI"
+import { fetchManageProfile } from "~/utils/userAPI"
+import { changePassword } from "~/utils/userAPI"
 import { useUserStore } from "@/stores/userStore"
 
-const store = useUserStore()
+const store:any = useUserStore()
+store.token = useCookie('token').value
 
 definePageMeta({
         middleware: 'auth'
@@ -109,15 +112,90 @@ async function getLogo() {
     return "https://content-shibaqueue.doksakura.com" + path
 }
 
+const getErrorOldPassword = () => {return document.getElementById("error_old")}
+const getErrorNewPassword = () => {return document.getElementById("error_new")}
+const getOldPassword = () => {return document.getElementById("oldPassword")}
+const getNewPassword = () => {return document.getElementById("newPassword")}
+const getConfirmNewPassword = () => {return document.getElementById("confirmNewPassword")}
 
-let logoImage:string = await getLogo()
-//let name = store.username
+async function requestChangePassword(){
+    let status:number = 3
+    let old:any = getOldPassword()
+    let newPass:any = getNewPassword()
+    let confirmNewPass:any = getConfirmNewPassword()
+    const pattern = /Error: Password Mismatch/g
 
-let firstName = "firstNameText"
-let lastname = "lastnameText"
-let username = "usernameText"
-let email = "emailText"
-let restaurant = "restaurantText"
+    let errorOld:any = getErrorOldPassword()
+    errorOld.style.display = "none"
+    let errorNew:any = getErrorNewPassword()
+    errorNew.style.display = "none"
+
+    old.style.borderColor = "rgb(202,202,202)"
+    newPass.style.borderColor = "rgb(202,202,202)"
+    confirmNewPass.style.borderColor = "rgb(202,202,202)"
+
+
+
+    if (old.value.length == 0){
+        old.style.borderColor = "tomato"
+        errorOld.style.display = "inline"
+        errorOld.innerHTML = "Please enter your old password."
+        --status
+    }
+    if (newPass.value.length == 0 || confirmNewPass.value.length == 0){
+        newPass.style.borderColor = "tomato"
+        confirmNewPass.style.borderColor = "tomato"
+        errorNew.style.display = "inline"
+        errorNew.innerHTML = "Please enter a new password."
+        --status
+    }
+    if (newPass.value != confirmNewPass.value){
+        newPass.style.borderColor = "tomato"
+        confirmNewPass.style.borderColor = "tomato"
+        errorNew.style.display = "inline"
+        errorNew.innerHTML = "New password doesn't match."
+        --status
+    }
+
+    if (status == 3){
+        const data = await changePassword(store.token,old.value,confirmNewPass.value)
+        if (data.match(pattern) != null){
+            old.style.borderColor = "tomato"
+            errorOld.style.display = "inline"
+            errorOld.innerHTML = "Password Mismatch."
+            --status
+        }else{
+            alert("Password changed successfully")
+            old.value = ""
+            newPass.value = ""
+            confirmNewPass.value = ""
+            old.style.borderColor = "rgb(202,202,202)"
+            newPass.style.borderColor = "rgb(202,202,202)"
+            confirmNewPass.style.borderColor = "rgb(202,202,202)"
+
+            errorOld.style.display = "none"
+            errorNew.style.display = "none"
+        }
+    }
+}
+
+const request:any = await fetchManageProfile(useCookie('token').value)
+let name:string [] = request.ownerName.split(" ",request.ownerName.length)
+
+store.email = request.email
+store.firstName = name[0]
+store.lastNmae = name[1]
+store.restaurantName = request.restaurantName
+store.username = request.username
+
+
+const logoImage:string = await getLogo()
+
+let firstName = store.firstName
+let lastname = store.lastNmae
+let username = store.username
+let email = store.email
+let restaurant = store.restaurantName
 
 
 

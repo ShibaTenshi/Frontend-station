@@ -35,6 +35,11 @@
 </template>
 
 <script setup>
+import { useUserStore } from "@/stores/userStore"
+
+const store = useUserStore()
+store.token = useCookie('token').value
+
     definePageMeta({
         middleware: 'auth'
     })

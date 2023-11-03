@@ -102,11 +102,11 @@
             const response = await useAuth(this.getUsernameField(), this.getPasswordField())
             const pattern = /Error:/g
             const data = response.data
-            if (!data.match(pattern)){
+            if (data.match(pattern) == null){
                 const cookie = useCookie('token')
                 cookie.value = response.data
                 this.password = null
-                navigateTo('/usrs')
+                navigateTo("/usrs")
             }
             else{
                 //alert(response.data)

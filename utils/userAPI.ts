@@ -11,3 +11,43 @@ export async function fetchLogoImage(username:string){
 
     return data;
 }
+
+
+export async function fetchManageProfile(tokenId:unknown){
+    const axios = useNuxtApp().$axios;
+    const api = 'http://localhost:5041/profile';
+
+    let data
+
+    await axios.get(api, {
+        params: {
+            tokenId: tokenId
+        }
+    }).then((response) => {data = response.data}).catch((error) =>{
+        data = error.response
+    })
+
+    return data;
+}
+
+export async function changePassword(tokenId:unknown,oldPassword:string,newPassword:string){
+    const axios = useNuxtApp().$axios;
+    const api = 'http://localhost:5041/profile/changePassword';
+
+    const data = await axios.post(api, {
+        tokenId: tokenId,
+        oldPassword: oldPassword,
+        newPassword: newPassword
+    },{
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        }
+    }
+    ).then((response) => {
+        return response.data;
+    }).catch((error) => {
+        return error.data;
+    })
+
+    return data;
+}
