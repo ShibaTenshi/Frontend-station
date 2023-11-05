@@ -173,39 +173,68 @@
             setHours(){
                 let select = document.getElementById("hours")
                 for (let hours = 0; hours < 24; hours++) {
-                    let data = document.createElement("option");
-                    data.setAttribute('value',hours);
-                    let dataText = document.createTextNode(hours);
-                    data.appendChild(dataText);                    
-                    select.appendChild(data)     
+                    let data = document.createElement("option")
+
+                    if (hours < 10){
+                        data.setAttribute('value',"0" + hours)
+                        let dataText = document.createTextNode("0" + hours)
+                        data.appendChild(dataText)
+                        select.appendChild(data) 
+                    }else{
+                        data.setAttribute('value',hours)
+                        let dataText = document.createTextNode(hours)
+                        data.appendChild(dataText)               
+                        select.appendChild(data) 
+                    }    
                 }
 
                 let select2 = document.getElementById("hours2")
                 for (let hours = 0; hours < 24; hours++) {
-                    let data = document.createElement("option");
-                    data.setAttribute('value',hours);
-                    let dataText = document.createTextNode(hours);
-                    data.appendChild(dataText);
-                    select2.appendChild(data)     
+                    let data = document.createElement("option")
+                    if (hours < 10){
+                        data.setAttribute('value',"0" + hours);
+                        let dataText = document.createTextNode("0" + hours)
+                        data.appendChild(dataText)               
+                        select2.appendChild(data) 
+                    }else{
+                        data.setAttribute('value',hours)
+                        let dataText = document.createTextNode(hours)
+                        data.appendChild(dataText)                  
+                        select2.appendChild(data) 
+                    }     
                 }
             },
             setMinutes(){
                 let select = document.getElementById("minutes")
                 for (let minutes = 0; minutes < 60; minutes++) {
-                    let data = document.createElement("option");
-                    data.setAttribute('value',minutes);
-                    let dataText = document.createTextNode(minutes);
-                    data.appendChild(dataText);                    
-                    select.appendChild(data)     
+                    let data = document.createElement("option")
+                    if (minutes < 10){
+                        data.setAttribute('value',"0" + minutes)
+                        let dataText = document.createTextNode("0" + minutes)
+                        data.appendChild(dataText);                    
+                        select.appendChild(data) 
+                    }else{
+                        data.setAttribute('value',minutes)
+                        let dataText = document.createTextNode(minutes)
+                        data.appendChild(dataText)                
+                        select.appendChild(data) 
+                    }      
                 }
 
                 let select2 = document.getElementById("minutes2")
                 for (let minutes = 0; minutes < 60; minutes++) {
-                    let data = document.createElement("option");
-                    data.setAttribute('value',minutes);
-                    let dataText = document.createTextNode(minutes);
-                    data.appendChild(dataText);                    
-                    select2.appendChild(data)      
+                    let data = document.createElement("option")
+                    if (minutes < 10){
+                        data.setAttribute('value',"0" + minutes)
+                        let dataText = document.createTextNode("0" + minutes)
+                        data.appendChild(dataText)          
+                        select2.appendChild(data) 
+                    }else{
+                        data.setAttribute('value',minutes)
+                        let dataText = document.createTextNode(minutes)
+                        data.appendChild(dataText)                 
+                        select2.appendChild(data) 
+                    }      
                 }
             },
 
