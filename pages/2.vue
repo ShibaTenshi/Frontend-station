@@ -150,7 +150,9 @@
             setTypeDropDown(){
                 async function getTag(){
                     const axios = useNuxtApp().$axios
-                    const api = 'http://10.147.17.253:5041/content/category'
+                    const runtime = useRuntimeConfig()
+                    const api = runtime.public.API_URL + 'content/category'
+                    // const api = 'http://10.147.17.253:5041/content/category'
                     let select = document.getElementById("typeDropDown")
 
                     await  axios.get(api).then((response) => {

@@ -108,8 +108,10 @@ definePageMeta({
 
 const goBack = () => navigateTo("/usrs")
 async function getLogo() {
-    const path = await fetchLogoImage("earth1234")
-    return "https://content-shibaqueue.doksakura.com" + path
+    const runtime = useRuntimeConfig()
+    const api = runtime.public.STORAGE_URL
+    const path = await fetchLogoImage("earth11")
+    return api + path
 }
 
 const getErrorOldPassword = () => {return document.getElementById("error_old")}

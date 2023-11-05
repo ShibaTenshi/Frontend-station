@@ -114,7 +114,9 @@ function haveImage():boolean {
 
           const body = new FormData();
           body.append('file', file.value, file.value.name)
-          await $fetch('http://10.147.17.253:5034/restaurant/image/logo/'+ form[2],{ method: 'post', body })
+          const runtime = useRuntimeConfig()
+          const api = runtime.public.STORAGE_URL + 'restaurant/image/logo/'
+          await $fetch( api + form[3],{ method: 'post', body })
           //alert('Uploaded')
           return 1
         }
@@ -193,7 +195,9 @@ const OnMenuSubmit = async () => {
         const body = new FormData();
         body.append('file', fileMenu.value, fileMenu.value.name)
         console.log(body)
-        await $fetch('http://10.147.17.253:5034/restaurant/image/menu/'+ form[2],{ method: 'post', body })
+        const runtime = useRuntimeConfig()
+        const api = runtime.public.STORAGE_URL + 'restaurant/image/menu/'
+        await $fetch( api + form[3],{ method: 'post', body })
       }catch(error){
         console.log(error)
       }
@@ -267,7 +271,9 @@ const OnEnvSubmit = async () => {
         let form = JSON.parse(buff)
         const body = new FormData();
         body.append('file', fileEnv.value, fileEnv.value.name)
-        await $fetch('http://10.147.17.253:5034/restaurant/image/env/'+ form[2],{ method: 'post', body })
+        const runtime = useRuntimeConfig()
+        const api = runtime.public.STORAGE_URL + 'restaurant/image/env/'
+        await $fetch( api + form[3],{ method: 'post', body })
       }catch(error){
         console.log(error)
       }

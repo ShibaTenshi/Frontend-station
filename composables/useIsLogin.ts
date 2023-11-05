@@ -1,6 +1,7 @@
 export async function useIsLogin() {
     const axios = useNuxtApp().$axios;
-    const api = 'http://localhost:5041/token';
+    const runtime = useRuntimeConfig()
+    const api = runtime.public.API_URL + 'token'
 
     const cookie = useCookie('token')
     let status

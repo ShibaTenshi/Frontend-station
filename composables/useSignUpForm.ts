@@ -2,7 +2,9 @@ export const useSignUpForm = async (nameForm:string, emailF:string, usernameF:st
     //console.log(name, email, username, restaurantName, type ,description, location ,image)
 
     const axios = useNuxtApp().$axios;
-    const api = 'http://10.147.17.253:5041/register/restaurant';
+    const runtime = useRuntimeConfig()
+    const api = runtime.public.API_URL + 'register/restaurant'
+    // const api = 'http://10.147.17.253:5041/register/restaurant';
 
     const data = await axios.post(api, {
         ownerName: nameForm,

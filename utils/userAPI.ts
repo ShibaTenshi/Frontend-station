@@ -1,6 +1,7 @@
 export async function fetchLogoImage(username:string){
     const axios = useNuxtApp().$axios;
-    const api = 'http://10.147.17.253:5034/restaurant/image/logo/' + username;
+    const runtime = useRuntimeConfig()
+    const api = runtime.public.STORAGE_URL + 'restaurant/image/logo/' + username;
 
     const data = await axios.get(api
     ).then((response) => {
@@ -15,7 +16,8 @@ export async function fetchLogoImage(username:string){
 
 export async function fetchManageProfile(tokenId:unknown){
     const axios = useNuxtApp().$axios;
-    const api = 'http://localhost:5041/profile';
+    const runtime = useRuntimeConfig()
+    const api = runtime.public.STORAGE_URL + 'profile'
 
     let data
 

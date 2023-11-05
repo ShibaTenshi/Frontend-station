@@ -4,5 +4,11 @@ export default defineNuxtConfig({
     strict: true
   },
   modules: ['@pinia/nuxt'],
-  devtools: { enabled: true }
+  devtools: { enabled: true },
+  runtimeConfig: {
+    public: {
+      STORAGE_URL: "https://content-shibaqueue.doksakura.com/",
+      API_URL: "https://api-shibaqueue.doksakura.com/"
+    },
+  },
 })
