@@ -297,7 +297,12 @@ const OnEnvSubmit = async () => {
           navigateTo('/usrs')
         }
       },
-
+      haveLocalStorage(){
+                const arr = localStorage.getItem("h1")
+                if (arr == null){
+                    location.replace('/')
+                }
+            },
       haveLocalStorage(){
                 const arr = localStorage.getItem("h1")
                 if (arr == null){
@@ -363,6 +368,7 @@ const OnEnvSubmit = async () => {
         this.$nextTick(this.islogin)
         this.$nextTick(this.setCheckBox)
         this.$nextTick(this.setReferCode)
+        this.$nextTick(this.haveLocalStorage)
         this.$nextTick(this.haveLocalStorage)
     }
   }

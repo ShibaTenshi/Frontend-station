@@ -91,6 +91,7 @@
     font-size: 18px;
 }
 .wrapper .detailBox .form ul li select{
+    cursor: pointer;
     margin: 10px 10px 1rem 10px;
     border: solid 1px rgb(202,202,202);
     border-radius: 10px;
@@ -114,6 +115,7 @@
 }
 /*button*/
 .wrapper .detailBox .footer button{
+    cursor: pointer;
     border: none;
     border-radius: 10px;
     width: 6rem;

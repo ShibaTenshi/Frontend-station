@@ -109,6 +109,7 @@
 }
 /*button*/
 .footer button{
+    cursor: pointer;
     border: none;
     border-radius: 10px;
     width: 6rem;

@@ -79,19 +79,50 @@
                 const email = this.getEmailField();
                 const username = this.getUsernameField();
 
+                if (document.getElementById("nameField").value == ""){
+                    document.getElementById("nameField").style.borderColor = "tomato"
+                    status = 0
+                }else{
+                    document.getElementById("nameField").style.borderColor = "rgb(202,202,202)"
+                    status = 1
+                }
+
+                if (document.getElementById("emailField").value == ""){
+                    status = 0
+                    document.getElementById("emailField").style.borderColor = "tomato"
+                }else{
+                    document.getElementById("emailField").style.borderColor = "rgb(202,202,202)"
+                }
+
                 if (checkEmail(email) == 0 && email !== ""){
                     status = 0
                     alert("The email format is incorrect.")
                     document.getElementById("emailField").style.borderColor = "tomato"
-                    
                 }
 
-                if (name === "" || email === "" || username === ""){
+
+                if (document.getElementById("usernameField").value == ""){
                     status = 0
-                    alert("Incomplete information")
+                    document.getElementById("usernameField").style.borderColor = "tomato"
+                }else{
+                    document.getElementById("usernameField").style.borderColor = "rgb(202,202,202)"
                 }
 
-                if (name !== "" && checkEmail(email) && username !== ""){
+                if (checkUsername(username) == 0 && document.getElementById("usernameField").value != ""){
+                    status = 0
+                    alert("Username can't include spacial charactor")
+                    document.getElementById("usernameField").style.borderColor = "tomato"
+                }
+
+                // if (name === "" || email === "" || username === ""){
+                //     status = 0
+                //     alert("Incomplete information")
+                //     document.getElementById("emailField").style.borderColor = "tomato"
+                //     document.getElementById("usernameField").style.borderColor = "tomato"
+                //     document.getElementById("nameField").style.borderColor = "tomato"
+                // }
+
+                if (name !== "" && checkEmail(email) && username !== "" && checkUsername(username)){
                     this.name = name
                     this.email = email
                     this.username = username;
@@ -107,13 +138,11 @@
                         const signupForm = [this.name, this.email, this.username]
                         let buff = JSON.stringify(signupForm)
                         localStorage.setItem("h1",buff)
+                        this.clearForm()
                         navigateTo("/2")
                     }
                 } catch (e) {
                     console.log(e)
-                }
-                finally{
-                    this.clearForm()
                 }
             }
         },
