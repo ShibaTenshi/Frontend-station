@@ -108,7 +108,7 @@ p{
 .wrapper .main .footer{
     background-color: white;
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
     margin: 1rem;
 }
 .wrapper .main .footer button{
@@ -125,4 +125,14 @@ p{
     background-color: rgb(121, 142, 102);
     width: 6rem;
     height: 3rem;
+}
+
+.wrapper .main .footer .delete button{
+    background-color: tomato;
+    cursor: pointer;
+    transition: 0.35s;
+}
+.wrapper .main .footer .delete button:hover{
+    background-color: red;
+    transition: 0.35s;
 }

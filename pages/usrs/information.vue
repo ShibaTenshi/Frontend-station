@@ -41,7 +41,11 @@
             </div>
 
             <div class="footer">
+                <div class="delete">
+                    <button v-on:click="deleteAccount">Delete Account</button>
+                </div>
                 <button v-on:click="goBack">Back</button>
+
             </div>
         </div>
     </div>
@@ -73,6 +77,25 @@ export default {
     },
     methods:{
         goBack(){navigateTo("/usrs")},
+        async deleteAccount(){
+            let test = window.confirm("Confirm to delete Account")
+            if (test){
+                const axios = useNuxtApp().$axios;
+                const runtime = useRuntimeConfig()
+                const api = runtime.public.API_URL + 'auth/deleteUser'
+
+                let data
+
+                await axios.post(api,null, {
+                params: {
+                tokenId: useCookie('token').value
+                }
+            }).then((response) => {navigateTo("/login")}).catch((error) =>{
+                 data = error.response
+                })
+
+            }
+        },
         async fetchData(){
             const discription:any = await fetchDescriptionProfile(useCookie('token').value)
             this.restaurantName = discription.restaurantName

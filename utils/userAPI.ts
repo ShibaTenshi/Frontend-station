@@ -110,3 +110,21 @@ export async function editTable(tokenId:unknown, numSeat:string, numTable:string
 
     return data;
 }
+
+export async function getTable(tokenId:unknown){
+    const axios = useNuxtApp().$axios;
+    const runtime = useRuntimeConfig()
+    const api = runtime.public.API_URL + 'booking'
+
+    let data
+
+    await axios.get(api, {
+        params: {
+            tokenId: tokenId
+        }
+    }).then((response) => {data = response.data}).catch((error) =>{
+        data = error.response
+    })
+
+    return data;
+}

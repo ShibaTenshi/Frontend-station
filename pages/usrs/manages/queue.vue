@@ -23,8 +23,8 @@
                 <div><p>{{ date }}</p></div>
             </div>
 
-            <div class="table" id="table">
-                <table>
+            <div class="table">
+                <table id="table">
                     <colgroup>
                         <col class="c1">
                         <col class="c2">
@@ -36,22 +36,7 @@
                         <th>Date</th>
                         <th>Name</th>
                         <th>Time</th>
-                        <th>Size</th>
                         <th>Table</th>
-                    </tr>
-                    <tr>
-                        <td>01/01/2023</td>
-                        <td>earthinwss...</td>
-                        <td>10:00 AM</td>
-                        <td>1</td>
-                        <td>Normal</td>
-                    </tr>
-                    <tr>
-                        <td>01/01/2023</td>
-                        <td>name</td>
-                        <td>10:00 AM</td>
-                        <td>1</td>
-                        <td>Big</td>
                     </tr>
                 </table>
             </div>
@@ -70,8 +55,9 @@
     definePageMeta({
         middleware: 'auth'
     })
-    const goBack = () => navigateTo("/usrs")
-    let date = "01/01/2023 - 02/02/2023"
+    const goBack = () => {
+        navigateTo("/usrs")
+    }
 
 </script>
 
@@ -79,20 +65,75 @@
 
 <script lang="ts">
 import { fetchDescriptionProfile } from "~/utils/userAPI"
+import { getTable } from "~/utils/userAPI"
 export default {
     data(){
         return{
             restaurantName: "Restaurant Name",
-            information:"Information"
+            information:"Information",
+            date: "NO Queue"
         }
     },
     methods:{
         async fetchData(){
-
             const discription:any = await fetchDescriptionProfile(useCookie('token').value)
             this.restaurantName = discription.restaurantName
             this.information = discription.description;
+
+            const responeTable:any = await getTable(useCookie('token').value)
+            if (responeTable.length != 0 ){
+                const time = responeTable[0].dateTime.split(" ",responeTable.length+1)
+                this.date = time[0]
+                this.generateTable(time[0],responeTable[0].name,time[1],responeTable[0].seatNumber, responeTable.length)
+            }
         },
+        async generateTable(tdate:string, tname:string, ttime:string, ttype:string, tableSize:number){
+            
+            for (let index = 0; index < tableSize; index++) {
+                let table: HTMLTableElement = <HTMLTableElement> document.getElementById("table");
+
+                let date:HTMLElement = document.createElement('td')
+                let name:any = document.createElement('td')
+                let time:any = document.createElement('td')
+                let type:any = document.createElement('td')
+
+                let text_date:any = document.createElement('p')
+                let text_name:any = document.createElement('p')
+                let text_time:any = document.createElement('p')
+                let text_type:any = document.createElement('p')
+
+                text_date.style.textAlign = "center"
+                text_date.style.margin = "10px 0 10px 0"
+
+                text_name.style.textAlign = "center"
+                text_name.style.margin = "10px 0 10px 0"
+
+                text_time.style.textAlign = "center"
+                text_time.style.margin = "10px 0 10px 0"
+
+                text_type.style.textAlign = "center"
+                text_type.style.margin = "10px 0 10px 0"
+
+                text_date.innerHTML = tdate
+                text_name.innerHTML = tname
+                text_time.innerHTML = ttime
+                text_type.innerHTML =  "Size " + ttype + " table"
+
+                date.append(text_date)
+                name.append(text_name)
+                time.append(text_time)
+                type.append(text_type)
+
+                let tr = document.createElement('tr')
+                tr.className = "content"
+                tr.append(date)
+                tr.append(name)
+                tr.append(time)
+                tr.append(type)
+
+                table.append(tr)
+            }
+        }
     },
     mounted: function() {
         this.$nextTick(this.fetchData)
