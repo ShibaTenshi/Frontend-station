@@ -55,9 +55,6 @@
     definePageMeta({
         middleware: 'auth'
     })
-    const goBack = () => {
-        navigateTo("/usrs")
-    }
 
 </script>
 
@@ -71,10 +68,13 @@ export default {
         return{
             restaurantName: "Restaurant Name",
             information:"Information",
-            date: "NO Queue"
+            date: "NO Queue",
         }
     },
     methods:{
+        goBack(){
+            location.href = '/usrs';
+        },
         async fetchData(){
             const discription:any = await fetchDescriptionProfile(useCookie('token').value)
             this.restaurantName = discription.restaurantName
@@ -82,14 +82,16 @@ export default {
 
             const responeTable:any = await getTable(useCookie('token').value)
             if (responeTable.length != 0 ){
-                const time = responeTable[0].dateTime.split(" ",responeTable.length+1)
-                this.date = time[0]
-                this.generateTable(time[0],responeTable[0].name,time[1],responeTable[0].seatNumber, responeTable.length)
+                for (let index = 0; index < responeTable.length; index++) {
+                    const time = responeTable[index].dateTime.split(" ",responeTable.length)
+                    this.date = time[0]
+
+                    this.generateTable(time[0],responeTable[index].name,time[1],responeTable[index].seatNumber, responeTable.length)
+                }
             }
         },
         async generateTable(tdate:string, tname:string, ttime:string, ttype:string, tableSize:number){
             
-            for (let index = 0; index < tableSize; index++) {
                 let table: HTMLTableElement = <HTMLTableElement> document.getElementById("table");
 
                 let date:HTMLElement = document.createElement('td')
@@ -132,7 +134,6 @@ export default {
                 tr.append(type)
 
                 table.append(tr)
-            }
         }
     },
     mounted: function() {
