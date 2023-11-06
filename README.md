@@ -1,26 +1,20 @@
-# Nuxt 3 Minimal Starter
+# ShibaStation
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+เป็นเว็บไซต์ที่ให้บริการในส่วนของร้านอาหาร
+โดยผู้ใช้จะเป็นร้านอาหาร
 
-## Setup
+- สามารถจัดการจำนวนโต็ะ และ ประเภทของโต็ะได้
+- ดูรายการลูกค้าที่ได้ทำการจองร้านอาหารเข้ามา
+- เจ้าของร้านสามารถที่จะเปลี่ยนรหัสผ่าน เพิ่มรูปภาพร้านอาหาร เมนูอาหาร และภาพบรรยากาศได้
 
-Make sure to install the dependencies:
 
-```bash
-# npm
-npm install
 
-# pnpm
-pnpm install
+ใช้ในการพัฒนา
 
-# yarn
-yarn install
-
-# bun
-bun install
-```
 
 ## Development Server
+
+ใช้ในการพัฒนา
 
 Start the development server on `http://localhost:3000`:
 
