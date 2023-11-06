@@ -38,7 +38,7 @@
                         <input type="text" name="locationField" id="locationField" class="text">
                     </li>
                     <li>
-                        <p>Open Date</p>
+                        <p>Open Time</p>
                         <select name="type" id="hours" v-on:change="getOpenHoursDropDown">
                             <option value="">Hours</option>
                         </select>
@@ -47,7 +47,7 @@
                         </select>
                     </li>
                     <li>
-                        <p>Close Date</p>
+                        <p>Close Time</p>
                         <select name="type" id="hours2" v-on:change="getCloseHoursDropDown">
                             <option value="">Hours</option>
                         </select>
