@@ -113,15 +113,6 @@
                     alert("Username can't include spacial charactor")
                     document.getElementById("usernameField").style.borderColor = "tomato"
                 }
-
-                // if (name === "" || email === "" || username === ""){
-                //     status = 0
-                //     alert("Incomplete information")
-                //     document.getElementById("emailField").style.borderColor = "tomato"
-                //     document.getElementById("usernameField").style.borderColor = "tomato"
-                //     document.getElementById("nameField").style.borderColor = "tomato"
-                // }
-
                 if (name !== "" && checkEmail(email) && username !== "" && checkUsername(username)){
                     this.name = name
                     this.email = email

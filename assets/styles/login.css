@@ -63,6 +63,7 @@
     background-color: white;
 }
 .wrapper .field ul .textField li input{
+    transition: 0.35s;
     margin-top: 10px;
     margin-bottom: 10px;
     border: solid 1px rgb(202,202,202);

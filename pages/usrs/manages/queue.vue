@@ -78,7 +78,6 @@
 
 
 <script lang="ts">
-import { fetchNameProfile } from "~/utils/userAPI"
 import { fetchDescriptionProfile } from "~/utils/userAPI"
 export default {
     data(){
@@ -89,11 +88,10 @@ export default {
     },
     methods:{
         async fetchData(){
-            const name:any = await fetchNameProfile(useCookie('token').value)
-            this.restaurantName = name;
 
             const discription:any = await fetchDescriptionProfile(useCookie('token').value)
-            this.information = discription;
+            this.restaurantName = discription.restaurantName
+            this.information = discription.description;
         },
     },
     mounted: function() {

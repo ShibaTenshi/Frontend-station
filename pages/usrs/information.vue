@@ -21,7 +21,7 @@
                     <p>Restarurant Type</p>
                     <img src="@/assets/pngwing2.png" alt="">
                 </div>
-                <p>Restarurant Type</p>
+                <p>{{ restaurantType }}</p>
             </div>
 
             <div class="location">
@@ -29,7 +29,7 @@
                     <p>Location</p>
                     <img src="@/assets/pngwing2.png" alt="">
                 </div>
-                <p>Location</p>
+                <p>{{ location }}</p>
             </div>
 
             <div class="time">
@@ -58,39 +58,42 @@
 
 
 <script lang="ts">
-import { fetchNameProfile } from "~/utils/userAPI"
 import { fetchDescriptionProfile } from "~/utils/userAPI"
 import { timeFormat } from "~/utils/timeFormat";
 
 export default {
     data(){
         return{
-            restaurantName: null,
-            restaurantDiscription: null,
-            location: null,
-            time: ""
+            restaurantName: "",
+            restaurantDiscription: "",
+            restaurantType: "",
+            location: "",
+            time: "",
         }
     },
     methods:{
         goBack(){navigateTo("/usrs")},
         async fetchData(){
-            const name:any = await fetchNameProfile(useCookie('token').value)
-            this.restaurantName = name;
-
             const discription:any = await fetchDescriptionProfile(useCookie('token').value)
-            this.restaurantDiscription = discription;
-        },
+            this.restaurantName = discription.restaurantName
 
+            this.restaurantDiscription = discription.description
+
+            this.restaurantType = discription.category
+
+            this.location = discription.location
+
+            this.time = this.setTime(discription.openDate,discription.openTime,discription.closeTime)
+        },
         setTime(openDate:string, openTime:string, closeTime:string){
             return timeFormat(openDate, openTime ,closeTime)
         },
 
-        setInformation(){
+        setInformation(){  
             this.time = this.setTime("1101011","13:59","20:00")
         }
     },
     mounted: function () {
-        this.$nextTick(this.setInformation)
         this.$nextTick(this.fetchData)
     }
 }

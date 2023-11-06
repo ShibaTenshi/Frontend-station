@@ -34,6 +34,7 @@
 </template>
 
 <script>
+import { useUserStore } from "@/stores/userStore"
     export default {
     data() {
         return {
@@ -53,9 +54,10 @@
                 navigateTo('/usrs')
             }
         },
-
-        failMassage(){
-
+        removeToken(){
+            const store = useUserStore()
+            useCookie('token').value = ""
+            store.token = ""
         },
         clearPaswordField(){
             const field = document.getElementById("passwdField")
@@ -79,7 +81,6 @@
             }
             else{
                 this.clearPaswordField()
-                //alert("input must not empty")
                 if (this.getUsernameField() == ""){
                     document.getElementById("p1").style.color = "tomato"
                     document.getElementById("usernameField").style.borderColor = "tomato"
@@ -103,15 +104,15 @@
             const pattern = /Error:/g
             const data = response.data
             if (data.match(pattern) == null){
+                const store = useUserStore()
                 const cookie = useCookie('token')
                 cookie.value = response.data
+                store.token = response.data
                 this.password = null
                 navigateTo("/usrs")
             }
             else{
-                //alert(response.data)
                 const word =response.data
-                //alert(word.includes('User'))
                 if (word.includes("User")){
                     document.getElementById("usernameField").style.borderColor = "tomato"
                     document.getElementById("p1").style.color = "tomato"
@@ -123,22 +124,12 @@
                     this.passwordError = word.substring(6)
                 }
             }
-            // if (response.status == 200){
-            //     const cookie = useCookie('token')
-            //     cookie.value = response.data
-            //     this.password = null
-            //     //navigateTo('/usrs')
-            // }
-            // else{
-            //     alert("username or password not correct")
-            // }
         },
     },
     mounted: function() {
         this.$nextTick(this.islogin())
+        this.$nextTick(this.removeToken())
     }
 }
 </script>
-
-
 <style scoped src="@/assets/styles/login.css"></style>

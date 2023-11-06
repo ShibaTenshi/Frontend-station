@@ -73,7 +73,6 @@
         <button v-on:click="async () => {await onLogoSumbit();await OnMenuSubmit();await OnEnvSubmit(); if (haveImage()){requestSignup()}}">Request</button>
       </div>
     </div>
-    <!-- async () => {await onLogoSumbit();await OnMenuSubmit();await OnEnvSubmit(); if (haveImage()){requestSignup()}} -->
 </template>
 
 <script setup lang="ts">
@@ -185,7 +184,6 @@ const OnMenuSubmit = async () => {
     return 0
   }
 
-  // statusLogo == 1 && statusMenu == 1 && statusEnv == 1
   if(statusLogo == 1 && statusMenu == 1 && statusEnv == 1){
     for (let index = 0; index < selectImageMenu.length; index++) {
       fileMenu.value = selectImageMenu[index]
@@ -355,7 +353,7 @@ const OnEnvSubmit = async () => {
             alert(data)
             await localStorage.setItem("refer",'')
           }
-          console.log(data)
+          //console.log(data)
         }
         requestApi()
       },

@@ -1,7 +1,7 @@
-export async function fetchLogoImage(username:string){
+export async function fetchLogoImage(restaurantName:string){
     const axios = useNuxtApp().$axios;
     const runtime = useRuntimeConfig()
-    const api = runtime.public.STORAGE_URL + 'restaurant/image/logo/' + username;
+    const api = runtime.public.STORAGE_URL + 'restaurant/image/logo/' + restaurantName;
 
     const data = await axios.get(api
     ).then((response) => {
@@ -17,7 +17,7 @@ export async function fetchLogoImage(username:string){
 export async function fetchManageProfile(tokenId:unknown){
     const axios = useNuxtApp().$axios;
     const runtime = useRuntimeConfig()
-    const api = runtime.public.STORAGE_URL + 'profile'
+    const api = runtime.public.API_URL + 'restaurant/profile'
 
     let data
 
@@ -34,29 +34,31 @@ export async function fetchManageProfile(tokenId:unknown){
 
 export async function changePassword(tokenId:unknown,oldPassword:string,newPassword:string){
     const axios = useNuxtApp().$axios;
-    const api = 'http://localhost:5041/profile/changePassword';
+    const runtime = useRuntimeConfig()
+    const api = runtime.public.API_URL + 'restaurant/profile/changePassword'
 
-    const data = await axios.post(api, {
-        tokenId: tokenId,
-        oldPassword: oldPassword,
-        newPassword: newPassword
-    },{
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8'
+
+    let data
+
+    await axios.post(api,null, {
+        params: {
+            tokenId: tokenId,
+            oldPassword: oldPassword,
+            newPassword: newPassword
+
         }
-    }
-    ).then((response) => {
-        return response.data;
-    }).catch((error) => {
-        return error.data;
+    }).then((response) => {data = response.data}).catch((error) =>{
+        data = error.response
     })
 
     return data;
 }
 
-export async function fetchNameProfile(tokenId:unknown){
+
+export async function fetchDescriptionProfile(tokenId:unknown){
     const axios = useNuxtApp().$axios;
-    const api = 'http://localhost:5041/name';
+    const runtime = useRuntimeConfig()
+    const api = runtime.public.API_URL + 'content/restaurantInfo'
 
     let data
 
@@ -71,15 +73,36 @@ export async function fetchNameProfile(tokenId:unknown){
     return data;
 }
 
-export async function fetchDescriptionProfile(tokenId:unknown){
+export async function fetchTableType(tokenId:unknown){
     const axios = useNuxtApp().$axios;
-    const api = 'http://localhost:5041/description';
+    const runtime = useRuntimeConfig()
+    const api = runtime.public.API_URL + 'restaurant/tableType'
 
     let data
 
     await axios.get(api, {
         params: {
             tokenId: tokenId
+        }
+    }).then((response) => {data = response.data}).catch((error) =>{
+        data = error.response
+    })
+
+    return data;
+}
+
+export async function editTable(tokenId:unknown, numSeat:string, numTable:string){
+    const axios = useNuxtApp().$axios;
+    const runtime = useRuntimeConfig()
+    const api = runtime.public.API_URL + 'restaurant/tableType/set'
+
+    let data
+
+    await axios.post(api,null, {
+        params: {
+            tokenId: tokenId,
+            numSeat: numSeat,
+            numTable: numTable
         }
     }).then((response) => {data = response.data}).catch((error) =>{
         data = error.response

@@ -110,7 +110,7 @@ const goBack = () => navigateTo("/usrs")
 async function getLogo() {
     const runtime = useRuntimeConfig()
     const api = runtime.public.STORAGE_URL
-    const path = await fetchLogoImage("earth11")
+    const path = await fetchLogoImage(store.restaurantName)
     return api + path
 }
 
@@ -160,28 +160,37 @@ async function requestChangePassword(){
     }
 
     if (status == 3){
-        const data = await changePassword(store.token,old.value,confirmNewPass.value)
+        const data:any = await changePassword(store.token,old.value,confirmNewPass.value)
         if (data.match(pattern) != null){
             old.style.borderColor = "tomato"
             errorOld.style.display = "inline"
             errorOld.innerHTML = "Password Mismatch."
             --status
         }else{
-            alert("Password changed successfully")
+            //alert("Password changed successfully")
             old.value = ""
             newPass.value = ""
             confirmNewPass.value = ""
+            errorNew.style.display = "inline"
+            errorNew.innerHTML = "Password changed successfully."
+            setTimeout(() => {
+                errorNew.style.display = "none"
+            }, 2000);
+            errorNew.style.color = "green"
+            errorNew.style.borderColor = "green"
+
             old.style.borderColor = "rgb(202,202,202)"
             newPass.style.borderColor = "rgb(202,202,202)"
             confirmNewPass.style.borderColor = "rgb(202,202,202)"
 
             errorOld.style.display = "none"
-            errorNew.style.display = "none"
+            
         }
     }
 }
 
-const request:any = await fetchManageProfile(useCookie('token').value)
+
+const request:any = await fetchManageProfile(store.token)
 let name:string [] = request.ownerName.split(" ",request.ownerName.length)
 
 store.email = request.email
@@ -191,7 +200,7 @@ store.restaurantName = request.restaurantName
 store.username = request.username
 
 
-const logoImage:string = await getLogo()
+const logoImage:string = await getLogo();
 
 let firstName = store.firstName
 let lastname = store.lastNmae

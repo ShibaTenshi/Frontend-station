@@ -73,8 +73,7 @@
 </template>
 
 <script>
-//api signup   notcomplete
-
+import { checkRestaurant } from '~/composables/checkRestauratn'
     export default{
         data(){
             return{
@@ -152,7 +151,6 @@
                     const axios = useNuxtApp().$axios
                     const runtime = useRuntimeConfig()
                     const api = runtime.public.API_URL + 'content/category'
-                    // const api = 'http://10.147.17.253:5041/content/category'
                     let select = document.getElementById("typeDropDown")
 
                     await  axios.get(api).then((response) => {
@@ -252,7 +250,11 @@
                 let buff = localStorage.getItem("h1")
                 let arry = JSON.parse(buff)
 
-                if (this.restaurantType != '' && this.opendate.length <= 5 && this.closedate.length <= 5){
+                if (checkRestaurant(this.restaurantName) == 0){
+                    alert("Restaurant can't include spacial charactor")
+                }
+
+                if (checkRestaurant(this.restaurantName) == 1 &&  this.restaurantType != '' && this.opendate.length <= 5 && this.closedate.length <= 5){
                     arry[3] = this.restaurantName
                     arry[4] = this.restaurantType
                     arry[5] = this.description

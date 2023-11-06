@@ -4,6 +4,14 @@ export default defineNuxtConfig({
     strict: true
   },
   modules: ['@pinia/nuxt'],
+  app:{
+    head: {
+      link:[{rel: 'icon', type: 'image/png', href: '@/assets/RestaurantLogo.png'}],
+      charset: 'utf-8',
+      viewport: 'width=device-width, initial-scale=1',
+    }
+  },
+
   devtools: { enabled: true },
   runtimeConfig: {
     public: {

@@ -7,6 +7,9 @@ export const useUserStore = defineStore('user', {
             firstName: "",
             lastNmae: "",
             restaurantName: "",
+            restaurantDiscription: "",
+            restaurantType: "",
+            location: "",
             username: "",
             token: "",
         }
