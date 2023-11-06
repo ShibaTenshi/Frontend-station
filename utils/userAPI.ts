@@ -4,9 +4,9 @@ export async function fetchLogoImage(restaurantName:string){
     const api = runtime.public.STORAGE_URL + 'restaurant/image/logo/' + restaurantName;
 
     const data = await axios.get(api
-    ).then((response) => {
+    ).then((response:any) => {
         return response.data;
-    }).catch((error) => {
+    }).catch((error:any) => {
         return error;
     })
 
@@ -25,7 +25,7 @@ export async function fetchManageProfile(tokenId:unknown){
         params: {
             tokenId: tokenId
         }
-    }).then((response) => {data = response.data}).catch((error) =>{
+    }).then((response:any) => {data = response.data}).catch((error:any) =>{
         data = error.response
     })
 
@@ -47,7 +47,7 @@ export async function changePassword(tokenId:unknown,oldPassword:string,newPassw
             newPassword: newPassword
 
         }
-    }).then((response) => {data = response.data}).catch((error) =>{
+    }).then((response:any) => {data = response.data}).catch((error:any) =>{
         data = error.response
     })
 
@@ -66,7 +66,7 @@ export async function fetchDescriptionProfile(tokenId:unknown){
         params: {
             tokenId: tokenId
         }
-    }).then((response) => {data = response.data}).catch((error) =>{
+    }).then((response:any) => {data = response.data}).catch((error:any) =>{
         data = error.response
     })
 
@@ -84,7 +84,7 @@ export async function fetchTableType(tokenId:unknown){
         params: {
             tokenId: tokenId
         }
-    }).then((response) => {data = response.data}).catch((error) =>{
+    }).then((response:any) => {data = response.data}).catch((error:any) =>{
         data = error.response
     })
 
@@ -104,7 +104,7 @@ export async function editTable(tokenId:unknown, numSeat:string, numTable:string
             numSeat: numSeat,
             numTable: numTable
         }
-    }).then((response) => {data = response.data}).catch((error) =>{
+    }).then((response:any) => {data = response.data}).catch((error:any) =>{
         data = error.response
     })
 
@@ -122,7 +122,7 @@ export async function getTable(tokenId:unknown){
         params: {
             tokenId: tokenId
         }
-    }).then((response) => {data = response.data}).catch((error) =>{
+    }).then((response:any) => {data = response.data}).catch((error:any) =>{
         data = error.response
     })
 
