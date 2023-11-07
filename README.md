@@ -8,15 +8,19 @@
 - เจ้าของร้านสามารถที่จะเปลี่ยนรหัสผ่าน เพิ่มรูปภาพร้านอาหาร เมนูอาหาร และภาพบรรยากาศได้
 
 
-
-ใช้ในการพัฒนา
+##สมาชิกกลุ่ม
+- พีรสิษฐ์ พลอยอร่าม 6410451237 หมู่ 200
+- นนทิพัทธ์ ศรีสุพรรณ 6410406690 หมู่ 1
+- พิชญชนาธิป ดุลบุตร 6410450192 หมู่ 200
+- ศิวกร ภาสว่าง 6410451423 หมู่ 200
+- กิตติกานต์ มากผล 6410450087 หมู่ 200
 
 
 ## Development Server
 
 ใช้ในการพัฒนา
 
-Start the development server on `http://localhost:3000`:
+Start the development server runon `http://localhost:3000`:
 
 ```bash
 # npm
@@ -49,21 +53,3 @@ yarn build
 # bun
 bun run build
 ```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
